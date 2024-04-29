@@ -8,84 +8,90 @@
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#31004A",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "light": "#F6F3FE",
+    "dark": "#31004A",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#31004A",
+      "to": "#F6F3FE"
     }
+  },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@spot-technologies.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://getspot.io"
+    "url": "https://app.getspot.io"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.getspot.io//blog"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Get Started with Spot 🔰",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "Introduction",
+        "Workflow Builder",
+        "YFT"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Data Modules 🗂️",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "Data Modules/Scrape Web Page",
+        "Data Modules/Generate File"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Logic Modules 🧩",
       "pages": [
-        "api-reference/introduction"
+        "Logic Modules/Combine Text",
+        "Logic Modules/Extract Information"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "AI Modules 🧠",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "AI/Models",
+        "AI/AI Text Creation",
+        "AI/AI Image Generation",
+        "AI/AI Image Transformation"
+      ]
+    },
+    {
+    "group": "Integration Modules 🔗",
+    "pages": [
+      "Integration Modules/Linked",
+        {
+            "group": "Google",
+            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader"]
+        },
+        {
+          "group": "Telegram",
+          "pages": ["Integration Modules/TelegramW"]
+      }
+    ]
+},
+
+    {
+      "group": "Agent Modules 🤖",
+      "pages": [
+        "Agents/DA",
+        "Agents/WebRA"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/spot-network"
   }
 }
