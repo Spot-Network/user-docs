@@ -49,14 +49,16 @@
       "group": "Data Modules 🗂️",
       "pages": [
         "Data Modules/Scrape Web Page",
-        "Data Modules/Generate File"
+        "Data Modules/Generate File",
+        "Data Modules/File to Text"
       ]
     },
     {
       "group": "Logic Modules 🧩",
       "pages": [
         "Logic Modules/Combine Text",
-        "Logic Modules/Extract Information"
+        "Logic Modules/Extract Information",
+        "Logic Modules/List2value"
       ]
     },
     {
@@ -74,7 +76,7 @@
       "Integration Modules/Linked",
         {
             "group": "Google",
-            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader"]
+            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer"]
         },
         {
           "group": "Telegram",
@@ -87,7 +89,8 @@
       "group": "Agent Modules 🤖",
       "pages": [
         "Agents/DA",
-        "Agents/WebRA"
+        "Agents/WebRA",
+        "Agents/WCA"
       ]
     }
   ],
