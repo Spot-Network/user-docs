@@ -67,7 +67,8 @@
         "AI/Models",
         "AI/AI Text Creation",
         "AI/AI Image Generation",
-        "AI/AI Image Transformation"
+        "AI/AI Image Transformation",
+        "AI/AIVision"
       ]
     },
     {
