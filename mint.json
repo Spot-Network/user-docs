@@ -40,9 +40,9 @@
     {
       "group": "Get Started with Spot 🔰",
       "pages": [
+        "YFT",
         "introduction",
-        "Workflow Builder",
-        "YFT"
+        "Workflow Builder"
       ]
     },
     {
