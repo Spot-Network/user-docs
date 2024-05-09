@@ -58,7 +58,8 @@
       "pages": [
         "Logic Modules/Combine Text",
         "Logic Modules/Extract Information",
-        "Logic Modules/List2value"
+        "Logic Modules/List2value",
+        "Logic Modules/Filterlist"
       ]
     },
     {
