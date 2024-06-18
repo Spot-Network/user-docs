@@ -1,0 +1,32 @@
+---
+title: 'Slack'
+description: 'This trigger allows users to start a workflow from Slack'
+---
+
+A `Slack trigger` interface allows users to run workflows seamlessly and directly from `Slack`. Triggers on `Slack` can be set based on a mention, channel, keyword, or combination.
+
+**You can use this feature to create your assistant directly on Slack. Remember that you have to invite the Spotbot into the channels where you want to run the workflow**
+
+The `Slack Trigger` function has the following configs and inputs:
+
+- **Mention**: You can define a trigger for your workflow whenever a user is tagged on Slack
+- **Channel**: You can define a trigger for your workflow whenever a message is sent in a specific channel 
+- **Keyword**: You can define a Keyword that, once mentioned on Slack, will trigger the workflow
+- **Inputs**: On the input variable, you can define the input variable of the workflow to receive a value from the message body, the channel it is running on, the message ID, or even Timestamp
+
+**Remember, if you leave all the configs empty, the workflow will run for any Slack message**
+
+Take, for example, this workflow for a researcher agent workflow.
+
+Firstly, the triggers should be set up. In this case, we want the trigger to be activated when a specific user is mentioned in a given channel and with a message containing the keyword `research` 
+
+<img height="200" src="/Triggers.png" />
+
+
+Secondly, the web researcher agent should be connected to a `Slack Writer` to return the output to the correct Slack channel. 
+
+<img height="200" src="/ST_3.png" />
+
+And finally, the trigger can be actioned directly on your Slack, as shown in the example below.
+
+<img height="200" src="/ST_2.png" />

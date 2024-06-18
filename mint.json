@@ -94,6 +94,14 @@
         "Agents/WebRA",
         "Agents/WCA"
       ]
+    },
+    {
+      "group": "Triggers⚡",
+      "pages": [
+        "Triggers/ST",
+        "Triggers/Clock",
+        "Triggers/Gmail"
+      ]
     }
   ],
   "footerSocials": {
