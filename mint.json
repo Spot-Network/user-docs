@@ -49,6 +49,8 @@
       "group": "Data Modules 🗂️",
       "pages": [
         "Data Modules/Scrape Web Page",
+        "Data Modules/Use Search Engine",
+        "Data Modules/List Website Entries",
         "Data Modules/Generate File",
         "Data Modules/File to Text"
       ]
@@ -58,18 +60,24 @@
       "pages": [
         "Logic Modules/Combine Text",
         "Logic Modules/Extract Information",
+        "Logic Modules/Condition",
+        "Logic Modules/Filterlist",
         "Logic Modules/List2value",
-        "Logic Modules/Filterlist"
+        "Logic Modules/Single2list"
       ]
     },
     {
       "group": "AI Modules 🧠",
       "pages": [
-        "AI/Models",
         "AI/AI Text Creation",
+        "Agents/DA",
+        "Agents/WebRA",
         "AI/AI Image Generation",
-        "AI/AI Image Transformation",
-        "AI/AIVision"
+        "AI/AIVision",
+        "AI/Translate Text",
+        "AI/Form",
+        "Agents/WCA",
+        "AI/AI Image Transformation"
       ]
     },
     {
@@ -87,14 +95,6 @@
     ]
 },
 
-    {
-      "group": "Agent Modules 🤖",
-      "pages": [
-        "Agents/DA",
-        "Agents/WebRA",
-        "Agents/WCA"
-      ]
-    },
     {
       "group": "Triggers⚡",
       "pages": [
