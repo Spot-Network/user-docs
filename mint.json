@@ -84,10 +84,19 @@
     "group": "Integration Modules 🔗",
     "pages": [
       "Integration Modules/Linked",
+     
         {
             "group": "Google",
-            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer"]
+            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Read Events", "Integration Modules/Create Event"]
         },
+        {
+          "group": "Notion",
+          "pages": ["Integration Modules/NReadPage","Integration Modules/NWritePage","Integration Modules/NReadDatabase","Integration Modules/NWriteDatabase"]
+      },
+        {
+          "group": "Slack",
+          "pages": ["Integration Modules/SlackReader","Integration Modules/SlackWriter"]
+      },
         {
           "group": "Telegram",
           "pages": ["Integration Modules/TelegramW"]

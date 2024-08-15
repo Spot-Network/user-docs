@@ -1,0 +1,22 @@
+---
+title: 'Slack - Read Messages'
+description: 'Read messages from a slack channel .'
+---
+
+>**This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
+
+The `Slack - Read Messages` module allows you to read messages from a slack channel. 
+
+>**Note: This module is particularly useful if you want to build an agent for your Slack. It ensures that all the historical messages are given as context.** 
+>**To build a Slack agent you should use a slack trigger, in order to activate the workflow on every message**
+
+The `Slack - Read Messages` module has **one output**:
+
+- **Outputs**: Text contained in the messages of a slack channel
+- **Config**:
+    - **Channel name**: The name of the slack channel to write messages in
+    - **Smart Formatting**: When enabled, will format the output messages and optimize them for Slack 
+
+Find below an example of how you use this module:
+
+<img height="200" src="/SlackReader.png"/>

@@ -1,0 +1,23 @@
+---
+title: 'Google Calendar - Create Event'
+description: 'Create an event on Google Calendar from a received input'
+---
+
+>**This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
+
+The `Google Calendar - Read Events` creates events on Google Calendar. Events can be created by specifying each of the components of an event or by using AI to describe the event  
+
+The `Google Calendar - Read Events` module has **multiple inputs** or **one input** when using AI Scheduling :
+
+- **Inputs**:
+    - `Multiple Inputs` - Title of the event, Location, Description, Starting Time, Ending Time, Recurrence and Emails of the Attendees. Each of the components can be written in no particular way as AI models are used to comprehend and parse the inputs.
+    - `One Input` - Using AI Scheduling, simply describe the event in text, and the module will handle the rest, generating event details seamlessly and accurately.
+- **Config**: 
+    - `Timezone` - Select the timezone for the invite (correspondent to the time that is being booked)
+    - `Create Google Meets` - Will attach a google meets link to the invite
+    
+Find below an example of how you can use the module to create an event:
+
+> Create a meeting for tomorrow at 3pm titled Feedback Session and invite email@company.com
+
+<img height="200" src="/CreateEvent.png"/>
