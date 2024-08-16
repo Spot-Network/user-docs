@@ -91,11 +91,19 @@
       {
         "group": "Calendly",
         "pages": ["Integration Modules/CReadEvents"]
-      },  
+      },
+      {
+        "group": "Github",
+        "pages": ["Integration Modules/GReadProfile"]
+    },  
       {
             "group": "Google",
             "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Read Events", "Integration Modules/Create Event"]
         },
+        {
+          "group": "Instagram",
+          "pages": ["Integration Modules/IReadProfile","Integration Modules/IReadComments"]
+      },
         {
           "group": "Linkedin",
           "pages": ["Integration Modules/ReadProfile","Integration Modules/CompanySearch"]
@@ -111,7 +119,11 @@
         {
           "group": "Telegram",
           "pages": ["Integration Modules/TelegramW"]
-      }
+      },
+      {
+        "group": "Youtube",
+        "pages": ["Integration Modules/ReadChannel","Integration Modules/TranscribeVideo"]
+    }
     ]
 },
 
