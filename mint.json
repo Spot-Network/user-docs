@@ -84,11 +84,22 @@
     "group": "Integration Modules 🔗",
     "pages": [
       "Integration Modules/Linked",
-     
-        {
+      {
+        "group": "Airtable",
+        "pages": ["Integration Modules/ReadR","Integration Modules/WriteR"]
+      },
+      {
+        "group": "Calendly",
+        "pages": ["Integration Modules/CReadEvents"]
+      },  
+      {
             "group": "Google",
             "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Read Events", "Integration Modules/Create Event"]
         },
+        {
+          "group": "Linkedin",
+          "pages": ["Integration Modules/ReadProfile","Integration Modules/CompanySearch"]
+      },
         {
           "group": "Notion",
           "pages": ["Integration Modules/NReadPage","Integration Modules/NWritePage","Integration Modules/NReadDatabase","Integration Modules/NWriteDatabase"]
