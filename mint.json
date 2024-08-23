@@ -72,6 +72,7 @@
         "AI/AI Text Creation",
         "Agents/DA",
         "Agents/WebRA",
+        "AI/EnrichCompany",
         "AI/AI Image Generation",
         "AI/AIVision",
         "AI/Translate Text",
@@ -98,7 +99,7 @@
     },  
       {
             "group": "Google",
-            "pages": ["Integration Modules/GmailW","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Read Events", "Integration Modules/Create Event"]
+            "pages": ["Integration Modules/GmailW","Integration Modules/GmailR","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Google Docs Writer", "Integration Modules/Read Events", "Integration Modules/Create Event"]
         },
         {
           "group": "Instagram",
@@ -120,6 +121,10 @@
           "group": "Telegram",
           "pages": ["Integration Modules/TelegramW"]
       },
+      {
+        "group": "Typeform",
+        "pages": ["Integration Modules/ReadTypeform"]
+    },
       {
         "group": "Youtube",
         "pages": ["Integration Modules/ReadChannel","Integration Modules/TranscribeVideo"]
