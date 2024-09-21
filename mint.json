@@ -40,11 +40,24 @@
     {
       "group": "Get Started with Spot 🔰",
       "pages": [
-        "YFT",
         "introduction",
+        "YFT",
         "Workflow Builder"
       ]
     },
+
+    {
+      "group": "Prompt Writing 📝",
+      "pages": [
+        "Prompt/Overview",
+        "Prompt/CCT",
+        "Prompt/Multishot",
+        "Prompt/let-the-ai-think",
+        "Prompt/assign-role-to-ai",
+        "Prompt/Select-model"
+      ]
+    },
+
     {
       "group": "Data Modules 🗂️",
       "pages": [
