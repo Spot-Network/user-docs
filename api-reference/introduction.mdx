@@ -1,33 +1,43 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "API Authentication and main concepts"
 ---
 
+The API of Noxus exposes a set of operations for authenticated clients to interact with core entities in the platform, particularly:
+
+- Workflows
+- Runs
+- Knowledge Bases
+
+Before interacting with any of the concepts it's howver necessary to understand the access mechanism and the organizational structure of the platform.
+
+### Organizational Structure in Noxus
+
+In the Noxus platform, any resource within an organization is associated with an workspace. Any action executed through the API will run in the context of a specific workspace.
+
+1. **Workspaces**:
+
+   An organization is divided into multiple **workspaces**, each functioning as an independent area to manage flows, runs, and other resources. Workspaces help segregate projects, teams, or environments (e.g., development, staging, production).
+
+2. **Members and Roles**:
+
+   Members are assigned to workspaces, where they have specific roles that define their permissions and access levels. This role-based system ensures secure and streamlined collaboration.
+
+3. **Personal Workspaces**:
+
+   Every member has a **personal workspace**, providing a private space for individual tasks and experimentation. Members can also join and collaborate in other workspaces within the organization.
+
+### Authentication
+
+Authentication in the Noxus platform is performed using an API key. To generate an API key, navigate to **Settings > Organization > Workspaces > API Keys** in the dashboard. An API key is always associated with one workspace, with full permissions.
+
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  Be careful when sharing access to an API key, as it will grant access to all
+  the resources in the workspace with full permissions.
 </Note>
 
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Include the API key in your requests by adding it to the header as follows:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+X-API-KEY: <your-api-key>
 ```

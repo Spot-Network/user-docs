@@ -1,0 +1,21 @@
+---
+title: "Read Webpage"
+description: "Reads the text present in a URL"
+---
+
+The `Read Webpage` module is a data module that can extract the text from a specific URL.
+**You can use this module to provide live contextual information from a specific web page to an AI model.**
+
+This module has multiple configurations that can enhance its capabilities.
+
+- **Depth of sub-links**: The number of sub-links that will be read in each webpage
+- **Scroll the Webpage**: When enabled, the model can smartly scroll the webpage to find more information
+- **Advanced Options**:
+  - **Continue on Error**: If enabled, in case the scraping fails, the output value of Text will contain the value `<ERROR>`, instead of failing the workflow
+  - **Parse HTML to Markdown**: If disabled, the output value of Text will contain the raw HTML, instead of the interpreted markdown version of the content
+
+The `Read Webpage` module has **one input** and **two outputs**:
+
+- **Input**: `URL`, the link to the webpage you want to scrape
+- **Output**: - `Pages`, the text that was extracted from the webpage - `Links Found`, a list with all the links found on each page. If you want to transform each sequence of links in a page into a list, you can use the module `Single value to list`
+  <img height="200" src="/images/WPR2.png" />

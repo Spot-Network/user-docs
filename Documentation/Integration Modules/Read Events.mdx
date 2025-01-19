@@ -1,0 +1,19 @@
+---
+title: "Google Calendar - Read Events"
+description: "Given a specific time frame, retrieves existing events from Google Calendar"
+---
+
+> **This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
+
+The `Google Calendar - Read Events` module retrieves events from Google Calendar. Found events will have the following fields: Name, Duration, Time, Location and the Participant's emails
+
+The `Google Calendar - Read Events` module has **one output**:
+
+- **Outputs**:
+  - Complete description of calendar events in text or JSON format, including Name, Duration, Time, Location and the Participant's emails
+- **Config**:
+  - `Time Frame` - Define the Day, starting hour and ending hour that the module should extract events from.
+
+Find below an example of how you can use the module to extract all the events from a week ahead:
+
+<img height="200" src="/images/GCReadEvents.png" />

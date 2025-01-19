@@ -1,0 +1,30 @@
+---
+title: "Gmail - Read Emails"
+description: "This module allows you to read emails directly from your Gmail account"
+---
+
+> **This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
+
+The `Gmail - Read Emails` pulls emails from your Gmail when you need them, based on what you're looking for.
+
+**This is particularly useful when you want to pull information from your emails to action a workflow or use information from emails as part of the context**
+
+The `Gmail - Read Emails` module has **six outputs**:
+
+- **Outputs**:
+
+  - `Sender`- Email address of the sender
+  - `Receiver`- Email address of the receiving party
+  - `CC`- Email addresses in CC
+  - `Attachment` - Files attached to the email
+  - `Date` - Date and time the email was sent
+  - `Body` - Content in the body of the email
+
+- **Config**:
+  - `Output as JSON`: If enabled, returns the result as a raw JSON result instead of a formatted markdown
+  - `Label`- Label of your gmail account associated with the emails to be read
+  - `Number of read emails`- Number of emails that should be read
+  - `Read Attachments` - Toggle to select wether attachments are read or not in each email
+  - `Read only unread emails` - Read only unread emails in your inbox
+
+<img height="200" src="/imags/GR.png" />

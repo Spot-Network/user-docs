@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Noxus Documentation",
   "logo": {
-    "dark": "Frame 1597881332 (1).svg",
-    "light": "Frame 1597881332 (1).svg"
+    "dark": "/images/Frame 1597881332 (1).svg",
+    "light": "/images/Frame 1597881332 (1).svg"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/images/favicon.svg",
   "colors": {
     "primary": "#8DB5D4",
     "light": "#8DB5D4",
@@ -29,127 +29,192 @@
     "name": "Dashboard",
     "url": "https://app.getspot.io"
   },
-  "anchors": [
+  "tabs": [
+    {
+      "name": "Documentation",
+      "url": "Documentation"
+    },
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
     {
       "name": "Blog",
-      "icon": "newspaper",
       "url": "https://www.noxus.ai/blog"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started with Noxus 🔰",
+      "group": "API Reference",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Workflows",
       "pages": [
-        "introduction",
-        "Workflow Builder"
+        "api-reference/v1/get-workflow-public",
+        "api-reference/v1/get-workflows-public"
       ]
     },
-
+    {
+      "group": "Runs",
+      "pages": [
+        "api-reference/v1/api-key-get-run",
+        "api-reference/v1/get-runs-public",
+        "api-reference/v1/create-run-with-api-key",
+        "api-reference/v1/create-sync-run"
+      ]
+    },
+    {
+      "group": "Knowledge Bases",
+      "pages": [
+        "api-reference/v1/public-get-knowledge-base",
+        "api-reference/v1/public-add-knowledge-base",
+        "api-reference/v1/public-get-knowledge-bases",
+        "api-reference/v1/delete-knowledge-base-v2",
+        "api-reference/v1/public-update-knowledge-base",
+        "api-reference/v1/add-knowledge-base-document",
+        "api-reference/v1/get-knowledge-base-document",
+        "api-reference/v1/get-knowledge-base-documents"
+      ]
+    },
+    {
+      "group": "Get Started with Noxus 🔰",
+      "pages": ["Documentation/introduction", "Documentation/Workflow Builder"]
+    },
     {
       "group": "Prompt Writing 📝",
       "pages": [
-        "Prompt/Overview",
-        "Prompt/CCT",
-        "Prompt/Multishot",
-        "Prompt/let-the-ai-think",
-        "Prompt/assign-role-to-ai",
-        "Prompt/Select-model"
+        "Documentation/Prompt/Overview",
+        "Documentation/Prompt/CCT",
+        "Documentation/Prompt/Multishot",
+        "Documentation/Prompt/let-the-ai-think",
+        "Documentation/Prompt/assign-role-to-ai",
+        "Documentation/Prompt/Select-model"
       ]
     },
 
     {
       "group": "Data Modules 🗂️",
       "pages": [
-        "Data Modules/Scrape Web Page",
-        "Data Modules/Use Search Engine",
-        "Data Modules/List Website Entries",
-        "Data Modules/Generate File",
-        "Data Modules/File to Text"
+        "Documentation/Data Modules/Scrape Web Page",
+        "Documentation/Data Modules/Use Search Engine",
+        "Documentation/Data Modules/List Website Entries",
+        "Documentation/Data Modules/Generate File",
+        "Documentation/Data Modules/File to Text"
       ]
     },
     {
       "group": "Logic Modules 🧩",
       "pages": [
-        "Logic Modules/Combine Text",
-        "Logic Modules/Extract Information",
-        "Logic Modules/Condition",
-        "Logic Modules/Filterlist",
-        "Logic Modules/List2value",
-        "Logic Modules/Single2list"
+        "Documentation/Logic Modules/Combine Text",
+        "Documentation/Logic Modules/Extract Information",
+        "Documentation/Logic Modules/Condition",
+        "Documentation/Logic Modules/Filterlist",
+        "Documentation/Logic Modules/List2value",
+        "Documentation/Logic Modules/Single2list"
       ]
     },
     {
       "group": "AI Modules 🧠",
       "pages": [
-        "AI/AI Text Creation",
-        "Agents/DA",
-        "Agents/WebRA",
-        "AI/EnrichCompany",
-        "AI/AI Image Generation",
-        "AI/AIVision",
-        "AI/Translate Text",
-        "AI/Form",
-        "Agents/WCA",
-        "AI/AI Image Transformation"
+        "Documentation/AI/AI Text Creation",
+        "Documentation/AI/EnrichCompany",
+        "Documentation/AI/AI Image Generation",
+        "Documentation/AI/AIVision",
+        "Documentation/AI/Translate Text",
+        "Documentation/AI/Form",
+        "Documentation/AI/AI Image Transformation",
+        "Documentation/Agents/WebRA"
       ]
     },
     {
-    "group": "Integration Modules 🔗",
-    "pages": [
-      "Integration Modules/Linked",
-      {
-        "group": "Airtable",
-        "pages": ["Integration Modules/ReadR","Integration Modules/WriteR"]
-      },
-      {
-        "group": "Calendly",
-        "pages": ["Integration Modules/CReadEvents"]
-      },
-      {
-        "group": "Github",
-        "pages": ["Integration Modules/GReadProfile"]
-    },  
-      {
-            "group": "Google",
-            "pages": ["Integration Modules/GmailW","Integration Modules/GmailR","Integration Modules/Google sheets reader","Integration Modules/Google sheets writer","Integration Modules/GDrive Reader","Integration Modules/GDrive writer","Integration Modules/Google Docs Reader", "Integration Modules/Google Docs Writer", "Integration Modules/Read Events", "Integration Modules/Create Event"]
+      "group": "Integration Modules 🔗",
+      "pages": [
+        "Documentation/Integration Modules/Linked",
+        {
+          "group": "Airtable",
+          "pages": [
+            "Documentation/Integration Modules/ReadR",
+            "Documentation/Integration Modules/WriteR"
+          ]
+        },
+        {
+          "group": "Calendly",
+          "pages": ["Documentation/Integration Modules/CReadEvents"]
+        },
+        {
+          "group": "Github",
+          "pages": ["Documentation/Integration Modules/GReadProfile"]
+        },
+        {
+          "group": "Google",
+          "pages": [
+            "Documentation/Integration Modules/GmailW",
+            "Documentation/Integration Modules/GmailR",
+            "Documentation/Integration Modules/Google sheets reader",
+            "Documentation/Integration Modules/Google sheets writer",
+            "Documentation/Integration Modules/GDrive Reader",
+            "Documentation/Integration Modules/GDrive writer",
+            "Documentation/Integration Modules/Google Docs Reader",
+            "Documentation/Integration Modules/Google Docs Writer",
+            "Documentation/Integration Modules/Read Events",
+            "Documentation/Integration Modules/Create Event"
+          ]
         },
         {
           "group": "Instagram",
-          "pages": ["Integration Modules/IReadProfile","Integration Modules/IReadComments"]
-      },
+          "pages": [
+            "Documentation/Integration Modules/IReadProfile",
+            "Documentation/Integration Modules/IReadComments"
+          ]
+        },
         {
           "group": "Linkedin",
-          "pages": ["Integration Modules/ReadProfile","Integration Modules/CompanySearch"]
-      },
+          "pages": [
+            "Documentation/Integration Modules/ReadProfile",
+            "Documentation/Integration Modules/CompanySearch"
+          ]
+        },
         {
           "group": "Notion",
-          "pages": ["Integration Modules/NReadPage","Integration Modules/NWritePage","Integration Modules/NReadDatabase","Integration Modules/NWriteDatabase"]
-      },
+          "pages": [
+            "Documentation/Integration Modules/NReadPage",
+            "Documentation/Integration Modules/NWritePage",
+            "Documentation/Integration Modules/NReadDatabase",
+            "Documentation/Integration Modules/NWriteDatabase"
+          ]
+        },
         {
           "group": "Slack",
-          "pages": ["Integration Modules/SlackReader","Integration Modules/SlackWriter"]
-      },
+          "pages": [
+            "Documentation/Integration Modules/SlackReader",
+            "Documentation/Integration Modules/SlackWriter"
+          ]
+        },
         {
           "group": "Telegram",
-          "pages": ["Integration Modules/TelegramW"]
-      },
-      {
-        "group": "Typeform",
-        "pages": ["Integration Modules/ReadTypeform"]
+          "pages": ["Documentation/Integration Modules/TelegramW"]
+        },
+        {
+          "group": "Typeform",
+          "pages": ["Documentation/Integration Modules/ReadTypeform"]
+        },
+        {
+          "group": "Youtube",
+          "pages": [
+            "Documentation/Integration Modules/ReadChannel",
+            "Documentation/Integration Modules/TranscribeVideo"
+          ]
+        }
+      ]
     },
-      {
-        "group": "Youtube",
-        "pages": ["Integration Modules/ReadChannel","Integration Modules/TranscribeVideo"]
-    }
-    ]
-},
 
     {
       "group": "Triggers⚡",
       "pages": [
-        "Triggers/ST",
-        "Triggers/Gmail",
-        "Triggers/Clock"
+        "Documentation/Triggers/ST",
+        "Documentation/Triggers/Gmail",
+        "Documentation/Triggers/Clock"
       ]
     }
   ],
