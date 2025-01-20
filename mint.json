@@ -5,7 +5,7 @@
     "dark": "/images/Frame 1597881332 (1).svg",
     "light": "/images/Frame 1597881332 (1).svg"
   },
-  "favicon": "/images/favicon.svg",
+  "favicon": "/images/Favicon.png",
   "colors": {
     "primary": "#8DB5D4",
     "light": "#8DB5D4",
@@ -29,6 +29,9 @@
     "name": "Dashboard",
     "url": "https://app.getspot.io"
   },
+  "primaryTab": {
+    "name": "Documentation"
+  },
   "tabs": [
     {
       "name": "Documentation",
@@ -44,39 +47,7 @@
     }
   ],
   "navigation": [
-    {
-      "group": "API Reference",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Workflows",
-      "pages": [
-        "api-reference/v1/get-workflow-public",
-        "api-reference/v1/get-workflows-public"
-      ]
-    },
-    {
-      "group": "Runs",
-      "pages": [
-        "api-reference/v1/api-key-get-run",
-        "api-reference/v1/get-runs-public",
-        "api-reference/v1/create-run-with-api-key",
-        "api-reference/v1/create-sync-run"
-      ]
-    },
-    {
-      "group": "Knowledge Bases",
-      "pages": [
-        "api-reference/v1/public-get-knowledge-base",
-        "api-reference/v1/public-add-knowledge-base",
-        "api-reference/v1/public-get-knowledge-bases",
-        "api-reference/v1/delete-knowledge-base-v2",
-        "api-reference/v1/public-update-knowledge-base",
-        "api-reference/v1/add-knowledge-base-document",
-        "api-reference/v1/get-knowledge-base-document",
-        "api-reference/v1/get-knowledge-base-documents"
-      ]
-    },
+    
     {
       "group": "Get Started with Noxus 🔰",
       "pages": ["Documentation/introduction", "Documentation/Workflow Builder"]
@@ -215,6 +186,39 @@
         "Documentation/Triggers/ST",
         "Documentation/Triggers/Gmail",
         "Documentation/Triggers/Clock"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Workflows",
+      "pages": [
+        "api-reference/v1/get-workflow-public",
+        "api-reference/v1/get-workflows-public"
+      ]
+    },
+    {
+      "group": "Runs",
+      "pages": [
+        "api-reference/v1/api-key-get-run",
+        "api-reference/v1/get-runs-public",
+        "api-reference/v1/create-run-with-api-key",
+        "api-reference/v1/create-sync-run"
+      ]
+    },
+    {
+      "group": "Knowledge Bases",
+      "pages": [
+        "api-reference/v1/public-get-knowledge-base",
+        "api-reference/v1/public-add-knowledge-base",
+        "api-reference/v1/public-get-knowledge-bases",
+        "api-reference/v1/delete-knowledge-base-v2",
+        "api-reference/v1/public-update-knowledge-base",
+        "api-reference/v1/add-knowledge-base-document",
+        "api-reference/v1/get-knowledge-base-document",
+        "api-reference/v1/get-knowledge-base-documents"
       ]
     }
   ],
