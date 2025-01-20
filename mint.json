@@ -29,6 +29,9 @@
     "name": "Dashboard",
     "url": "https://app.getspot.io"
   },
+  "primaryTab": {
+    "name": "Documentation"
+  },
   "tabs": [
     {
       "name": "Documentation",
