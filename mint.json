@@ -27,7 +27,7 @@
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://app.getspot.io"
+    "url": "https://app.noxus.ai"
   },
   "primaryTab": {
     "name": "Documentation"
@@ -210,7 +210,7 @@
         "api-reference/v1/public-get-run-by-id-and-workflow",
         "api-reference/v1/public-get-run-by-id",
         "api-reference/v1/public-get-run-data-by-id",
-        "api-reference/v1/search-runs-public",
+        "api-reference/v1/search-runs-public"
       ]
     },
     {
