@@ -142,6 +142,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Workflow Id"
             }
           }
@@ -189,6 +190,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Workflow Id"
             }
           }
@@ -244,6 +246,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Workflow Id"
             }
           },
@@ -266,6 +269,33 @@
               "default": "desc",
               "title": "Sort"
             }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
           }
         ],
         "responses": {
@@ -274,7 +304,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SimplifiedRun"
+                  "$ref": "#/components/schemas/Page_SimplifiedRun_"
                 }
               }
             }
@@ -297,8 +327,8 @@
         "tags": [
           "V1"
         ],
-        "summary": "Api Key Get Run",
-        "operationId": "api_key_get_run",
+        "summary": "Public Get Run By Id And Workflow",
+        "operationId": "public_get_run_by_id_and_workflow",
         "security": [
           {
             "APIKeyHeader": []
@@ -311,6 +341,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Workflow Id"
             }
           },
@@ -320,6 +351,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Run Id"
             }
           },
@@ -358,7 +390,7 @@
                       "$ref": "#/components/schemas/RunOutputWithStatus"
                     }
                   ],
-                  "title": "Response Api Key Get Run"
+                  "title": "Response Public Get Run By Id And Workflow"
                 }
               }
             }
@@ -395,6 +427,7 @@
             "required": true,
             "schema": {
               "type": "string",
+              "format": "uuid",
               "title": "Workflow Id"
             }
           },
@@ -444,6 +477,239 @@
                     }
                   ],
                   "title": "Response Create Sync Run"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/runs": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Paginated Runs",
+        "operationId": "public_get_paginated_runs",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "created_at",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Created At"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/components/schemas/RunStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "created_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_RunNoIO_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Run By Id",
+        "operationId": "public_get_run_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunNoIO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/runs/{run_id}/data": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Run Data By Id",
+        "operationId": "public_get_run_data_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunData"
                 }
               }
             }
@@ -2003,6 +2269,11 @@
             "type": "string",
             "title": "Content"
           },
+          "show_to_user": {
+            "type": "boolean",
+            "title": "Show To User",
+            "default": true
+          },
           "type": {
             "type": "string",
             "const": "error",
@@ -2119,6 +2390,11 @@
           "content": {
             "type": "string",
             "title": "Content"
+          },
+          "show_to_user": {
+            "type": "boolean",
+            "title": "Show To User",
+            "default": true
           },
           "type": {
             "type": "string",
@@ -2812,6 +3088,73 @@
         ],
         "title": "Page[KnowledgeBaseV2]"
       },
+      "Page_RunNoIO_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RunNoIO"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
+        "title": "Page[RunNoIO]"
+      },
       "Page_RunWithSearchData_": {
         "properties": {
           "items": {
@@ -2879,6 +3222,73 @@
         ],
         "title": "Page[RunWithSearchData]"
       },
+      "Page_SimplifiedRun_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SimplifiedRun"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
+        "title": "Page[SimplifiedRun]"
+      },
       "Page_WorkflowWithTriggers_": {
         "properties": {
           "items": {
@@ -2918,6 +3328,138 @@
           "pages"
         ],
         "title": "Page[WorkflowWithTriggers]"
+      },
+      "RunData": {
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "structured_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Structured Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "created_at"
+        ],
+        "title": "RunData"
+      },
+      "RunNoIO": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workflow Id"
+          },
+          "input": {
+            "type": "object",
+            "title": "Input"
+          },
+          "node_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Ids"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RunStatus"
+          },
+          "progress": {
+            "type": "integer",
+            "title": "Progress",
+            "default": 0
+          },
+          "definitions": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definitions"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "workflow": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Workflow"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "workflow_id",
+          "input",
+          "status",
+          "created_at"
+        ],
+        "title": "RunNoIO"
       },
       "RunOutput": {
         "properties": {
@@ -3012,6 +3554,9 @@
                   "type": "string"
                 },
                 "type": "array"
+              },
+              {
+                "type": "object"
               },
               {
                 "type": "null"
@@ -3213,6 +3758,9 @@
                 "type": "array"
               },
               {
+                "type": "object"
+              },
+              {
                 "type": "null"
               }
             ],
@@ -3382,6 +3930,11 @@
           "content": {
             "type": "string",
             "title": "Content"
+          },
+          "show_to_user": {
+            "type": "boolean",
+            "title": "Show To User",
+            "default": true
           },
           "type": {
             "type": "string",
@@ -3924,6 +4477,11 @@
           "content": {
             "type": "string",
             "title": "Content"
+          },
+          "show_to_user": {
+            "type": "boolean",
+            "title": "Show To User",
+            "default": true
           },
           "type": {
             "type": "string",

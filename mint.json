@@ -205,7 +205,12 @@
         "api-reference/v1/api-key-get-run",
         "api-reference/v1/get-runs-public",
         "api-reference/v1/create-run-with-api-key",
-        "api-reference/v1/create-sync-run"
+        "api-reference/v1/create-sync-run",
+        "api-reference/v1/public-get-paginated-runs",
+        "api-reference/v1/public-get-run-by-id-and-workflow",
+        "api-reference/v1/public-get-run-by-id",
+        "api-reference/v1/public-get-run-data-by-id",
+        "api-reference/v1/search-runs-public",
       ]
     },
     {
