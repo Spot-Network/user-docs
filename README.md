@@ -33,3 +33,6 @@ Install our Github App to autopropagate changes from youre repo to your deployme
 - Page loads as a 404 - Make sure you are running in a folder with `mint.json` 
 
 
+
+
+
