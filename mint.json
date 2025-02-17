@@ -220,6 +220,17 @@
         "api-reference/v1/get-knowledge-base-document",
         "api-reference/v1/get-knowledge-base-documents"
       ]
+    },
+    {
+      "group": "Conversations",
+      "pages": [
+        "api-reference/v1/public-list-conversations",
+        "api-reference/v1/public-create-conversation",
+        "api-reference/v1/public-get-conversation",
+        "api-reference/v1/public-delete-conversation",
+        "api-reference/v1/public-add-message",
+        "api-reference/v1/public-refresh-message"
+      ]
     }
   ],
   "footerSocials": {
