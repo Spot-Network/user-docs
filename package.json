@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "mintlify dev",
+    "openapi": "npx @mintlify/scraping@latest openapi-file openapi/openapi.json -o api-reference"
+  },
+  "dependencies": {
+    "mintlify": "^4.0.393"
+  }
+}
