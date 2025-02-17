@@ -1,1 +1,4383 @@
-{"openapi":"3.1.0","info":{"title":"FastAPI","version":"0.1.0"},"paths":{"/v1/workflows":{"get":{"tags":["V1"],"summary":"Get Workflows Public","operationId":"get_workflows_public","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"query","in":"query","required":false,"schema":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Query"}},{"name":"status","in":"query","required":false,"schema":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Status"}},{"name":"order_by","in":"query","required":false,"schema":{"type":"string","default":"last_updated_at","title":"Order By"}},{"name":"sort","in":"query","required":false,"schema":{"type":"string","default":"desc","title":"Sort"}},{"name":"page","in":"query","required":false,"schema":{"type":"integer","minimum":1,"description":"Page number","default":1,"title":"Page"},"description":"Page number"},{"name":"size","in":"query","required":false,"schema":{"type":"integer","maximum":100,"minimum":1,"description":"Page size","default":50,"title":"Size"},"description":"Page size"}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Page_WorkflowWithTriggers_"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/workflows/{workflow_id}":{"get":{"tags":["V1"],"summary":"Get Workflow Public","operationId":"get_workflow_public","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"workflow_id","in":"path","required":true,"schema":{"type":"string","title":"Workflow Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/WorkflowWithTriggers"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/workflows/{workflow_id}/run":{"post":{"tags":["V1"],"summary":"Create Run With Api Key","operationId":"create_run_with_api_key","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"workflow_id","in":"path","required":true,"schema":{"type":"string","title":"Workflow Id"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateRunRequest"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SimplifiedRun"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}},"get":{"tags":["V1"],"summary":"Get Runs Public","operationId":"get_runs_public","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"workflow_id","in":"path","required":true,"schema":{"type":"string","title":"Workflow Id"}},{"name":"order_by","in":"query","required":false,"schema":{"type":"string","default":"created_at","title":"Order By"}},{"name":"sort","in":"query","required":false,"schema":{"type":"string","default":"desc","title":"Sort"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SimplifiedRun"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/workflows/{workflow_id}/run/{run_id}":{"get":{"tags":["V1"],"summary":"Api Key Get Run","operationId":"api_key_get_run","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"workflow_id","in":"path","required":true,"schema":{"type":"string","title":"Workflow Id"}},{"name":"run_id","in":"path","required":true,"schema":{"type":"string","title":"Run Id"}},{"name":"output_only","in":"query","required":false,"schema":{"type":"boolean","default":false,"title":"Output Only"}},{"name":"use_output_ids","in":"query","required":false,"schema":{"type":"boolean","default":false,"title":"Use Output Ids"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"anyOf":[{"$ref":"#/components/schemas/SimplifiedRun"},{"$ref":"#/components/schemas/RunOutputWithStatus"}],"title":"Response Api Key Get Run"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/workflows/{workflow_id}/run/sync":{"post":{"tags":["V1"],"summary":"Create Sync Run","operationId":"create_sync_run","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"workflow_id","in":"path","required":true,"schema":{"type":"string","title":"Workflow Id"}},{"name":"output_only","in":"query","required":false,"schema":{"type":"boolean","default":false,"title":"Output Only"}},{"name":"use_output_ids","in":"query","required":false,"schema":{"type":"boolean","default":false,"title":"Use Output Ids"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateRunRequest"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"anyOf":[{"$ref":"#/components/schemas/RunOutput"},{"$ref":"#/components/schemas/SimplifiedRun"}],"title":"Response Create Sync Run"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/knowledge-bases":{"post":{"tags":["V1"],"summary":"Public Add Knowledge Base","operationId":"public_add_knowledge_base","security":[{"APIKeyHeader":[]}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateKnowledgeBase"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/KnowledgeBaseV2"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}},"get":{"tags":["V1"],"summary":"Public Get Knowledge Bases","operationId":"public_get_knowledge_bases","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"query","in":"query","required":false,"schema":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Query"}},{"name":"order_by","in":"query","required":false,"schema":{"type":"string","default":"last_updated_at","title":"Order By"}},{"name":"sort","in":"query","required":false,"schema":{"type":"string","default":"desc","title":"Sort"}},{"name":"page","in":"query","required":false,"schema":{"type":"integer","minimum":1,"description":"Page number","default":1,"title":"Page"},"description":"Page number"},{"name":"size","in":"query","required":false,"schema":{"type":"integer","maximum":100,"minimum":1,"description":"Page size","default":50,"title":"Size"},"description":"Page size"}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Page_KnowledgeBaseV2_"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/knowledge-bases/{knowledge_base_id}":{"get":{"tags":["V1"],"summary":"Public Get Knowledge Base","operationId":"public_get_knowledge_base","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/KnowledgeBaseV2"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}},"patch":{"tags":["V1"],"summary":"Public Update Knowledge Base","operationId":"public_update_knowledge_base","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/UpdateKnowledgeBase"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/KnowledgeBaseV2"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}},"delete":{"tags":["V1"],"summary":"Delete Knowledge Base V2","operationId":"delete_knowledge_base_v2","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Status"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/knowledge-bases/{knowledge_base_id}/document":{"post":{"tags":["V1"],"summary":"Add Knowledge Base Document","operationId":"add_knowledge_base_document","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateDocument"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/KnowledgeBaseDocument"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/knowledge-bases/{knowledge_base_id}/document/{document_id}":{"get":{"tags":["V1"],"summary":"Get Knowledge Base Document","operationId":"get_knowledge_base_document","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}},{"name":"document_id","in":"path","required":true,"schema":{"type":"string","title":"Document Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/KnowledgeBaseDocument"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},"/v1/knowledge-bases/{knowledge_base_id}/documents/{status}":{"get":{"tags":["V1"],"summary":"Get Knowledge Base Documents","operationId":"get_knowledge_base_documents","security":[{"APIKeyHeader":[]}],"parameters":[{"name":"knowledge_base_id","in":"path","required":true,"schema":{"type":"string","title":"Knowledge Base Id"}},{"name":"status","in":"path","required":true,"schema":{"type":"string","title":"Status"}},{"name":"page","in":"query","required":false,"schema":{"type":"integer","minimum":1,"description":"Page number","default":1,"title":"Page"},"description":"Page number"},{"name":"size","in":"query","required":false,"schema":{"type":"integer","maximum":100,"minimum":1,"description":"Page size","default":50,"title":"Size"},"description":"Page size"}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Page_KnowledgeBaseDocument_"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}}},"components":{"schemas":{"CreateDocument":{"properties":{"status":{"$ref":"#/components/schemas/DocumentStatus"},"prefix":{"type":"string","title":"Prefix","default":"/"},"name":{"type":"string","title":"Name"},"doc_metadata":{"type":"object","title":"Doc Metadata","default":{}}},"type":"object","required":["status","name"],"title":"CreateDocument"},"CreateKnowledgeBase":{"properties":{"name":{"type":"string","title":"Name"},"description":{"type":"string","title":"Description"},"document_types":{"items":{"type":"string"},"type":"array","title":"Document Types","default":[]},"status":{"allOf":[{"$ref":"#/components/schemas/TrainStatus"}],"default":"created"},"kb_type":{"allOf":[{"$ref":"#/components/schemas/KBType"}],"default":"temporary"},"workflow_id":{"anyOf":[{"type":"string","format":"uuid"},{"type":"null"}],"title":"Workflow Id"},"node_id":{"anyOf":[{"type":"string","format":"uuid"},{"type":"null"}],"title":"Node Id"}},"type":"object","required":["name","description"],"title":"CreateKnowledgeBase"},"CreateRunRequest":{"properties":{"input":{"type":"object","title":"Input"},"node_ids":{"anyOf":[{"items":{"type":"string"},"type":"array"},{"type":"null"}],"title":"Node Ids"},"group_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Group Id"}},"type":"object","required":["input"],"title":"CreateRunRequest"},"DocumentStatus":{"type":"string","enum":["trained","training","error","uploaded","folder"],"title":"DocumentStatus"},"HTTPValidationError":{"properties":{"detail":{"items":{"$ref":"#/components/schemas/ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"},"KBType":{"type":"string","enum":["temporary","entity"],"title":"KBType"},"KnowledgeBaseDocument":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"summary":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Summary"},"short_summary":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Short Summary"},"doc_type":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Doc Type"},"source_type":{"anyOf":[{"$ref":"#/components/schemas/SourceType"},{"type":"null"}]},"source_metadata":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Source Metadata"},"content_type":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Content Type"},"has_conversion":{"anyOf":[{"type":"boolean"},{"type":"null"}],"title":"Has Conversion"},"status":{"$ref":"#/components/schemas/DocumentStatus"},"doc_metadata":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Doc Metadata"},"error":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Error"},"name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Name"},"prefix":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Prefix"},"uri":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Uri"},"updated_at":{"type":"string","format":"date-time","title":"Updated At"},"created_at":{"type":"string","format":"date-time","title":"Created At"},"size":{"type":"integer","title":"Size"}},"type":"object","required":["id","summary","status","error","updated_at","created_at","size"],"title":"KnowledgeBaseDocument"},"KnowledgeBaseV2":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"group_id":{"type":"string","format":"uuid","title":"Group Id"},"name":{"type":"string","title":"Name"},"status":{"$ref":"#/components/schemas/TrainStatus"},"description":{"type":"string","title":"Description"},"document_types":{"items":{"type":"string"},"type":"array","title":"Document Types"},"kb_type":{"$ref":"#/components/schemas/KBType"},"size":{"type":"number","title":"Size"},"num_docs":{"type":"integer","title":"Num Docs"},"created_at":{"type":"string","format":"date-time","title":"Created At"},"updated_at":{"type":"string","format":"date-time","title":"Updated At"},"error":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Error"},"total_documents":{"type":"integer","title":"Total Documents"},"training_documents":{"type":"integer","title":"Training Documents"},"trained_documents":{"type":"integer","title":"Trained Documents"},"error_documents":{"type":"integer","title":"Error Documents"},"uploaded_documents":{"type":"integer","title":"Uploaded Documents"},"source_types":{"additionalProperties":{"type":"integer"},"type":"object","title":"Source Types"},"training_source_types":{"items":{"$ref":"#/components/schemas/SourceType"},"type":"array","title":"Training Source Types"},"documents":{"items":{"$ref":"#/components/schemas/KnowledgeBaseDocument"},"type":"array","title":"Documents","default":[]}},"type":"object","required":["id","group_id","name","status","description","document_types","kb_type","size","num_docs","created_at","updated_at","error","total_documents","training_documents","trained_documents","error_documents","uploaded_documents","source_types","training_source_types"],"title":"KnowledgeBaseV2"},"Page_KnowledgeBaseDocument_":{"properties":{"items":{"items":{"$ref":"#/components/schemas/KnowledgeBaseDocument"},"type":"array","title":"Items"},"total":{"type":"integer","minimum":0.0,"title":"Total"},"page":{"type":"integer","minimum":1.0,"title":"Page"},"size":{"type":"integer","minimum":1.0,"title":"Size"},"pages":{"type":"integer","minimum":0.0,"title":"Pages"}},"type":"object","required":["items","total","page","size","pages"],"title":"Page[KnowledgeBaseDocument]"},"Page_KnowledgeBaseV2_":{"properties":{"items":{"items":{"$ref":"#/components/schemas/KnowledgeBaseV2"},"type":"array","title":"Items"},"total":{"type":"integer","minimum":0.0,"title":"Total"},"page":{"type":"integer","minimum":1.0,"title":"Page"},"size":{"type":"integer","minimum":1.0,"title":"Size"},"pages":{"type":"integer","minimum":0.0,"title":"Pages"}},"type":"object","required":["items","total","page","size","pages"],"title":"Page[KnowledgeBaseV2]"},"Page_WorkflowWithTriggers_":{"properties":{"items":{"items":{"$ref":"#/components/schemas/WorkflowWithTriggers"},"type":"array","title":"Items"},"total":{"type":"integer","minimum":0.0,"title":"Total"},"page":{"type":"integer","minimum":1.0,"title":"Page"},"size":{"type":"integer","minimum":1.0,"title":"Size"},"pages":{"type":"integer","minimum":0.0,"title":"Pages"}},"type":"object","required":["items","total","page","size","pages"],"title":"Page[WorkflowWithTriggers]"},"RunOutput":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"output":{"type":"object","title":"Output"}},"type":"object","required":["id","output"],"title":"RunOutput"},"RunOutputWithStatus":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"output":{"type":"object","title":"Output"},"status":{"anyOf":[{"$ref":"#/components/schemas/RunStatus"},{"type":"string"}],"title":"Status"}},"type":"object","required":["id","output","status"],"title":"RunOutputWithStatus"},"RunStatus":{"type":"string","enum":["queued","running","failed","completed","stopped"],"title":"RunStatus"},"SimplifiedRun":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"group_id":{"type":"string","format":"uuid","title":"Group Id"},"workflow_id":{"type":"string","format":"uuid","title":"Workflow Id"},"input":{"type":"object","title":"Input"},"output":{"type":"object","title":"Output"},"node_ids":{"anyOf":[{"items":{"type":"string"},"type":"array"},{"type":"null"}],"title":"Node Ids"},"status":{"$ref":"#/components/schemas/RunStatus"},"progress":{"type":"integer","title":"Progress","default":0},"created_at":{"type":"string","format":"date-time","title":"Created At"},"finished_at":{"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}],"title":"Finished At"}},"type":"object","required":["id","group_id","workflow_id","input","output","status","created_at"],"title":"SimplifiedRun"},"SourceType":{"type":"string","enum":["Document","Google Drive","Notion","Website","OneDrive","Slack","Linear","Github","Teams","Sharepoint"],"title":"SourceType"},"Status":{"properties":{"success":{"type":"boolean","title":"Success"}},"type":"object","required":["success"],"title":"Status"},"TrainStatus":{"type":"string","enum":["created","trained","training","error"],"title":"TrainStatus"},"Trigger":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"group_id":{"type":"string","format":"uuid","title":"Group Id"},"workflow_id":{"type":"string","format":"uuid","title":"Workflow Id"},"definition":{"type":"object","title":"Definition"},"routing_key":{"type":"string","title":"Routing Key"}},"type":"object","required":["id","group_id","workflow_id","definition","routing_key"],"title":"Trigger"},"UpdateKnowledgeBase":{"properties":{"name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Name"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description"},"status":{"anyOf":[{"$ref":"#/components/schemas/TrainStatus"},{"type":"null"}]},"document_types":{"anyOf":[{"items":{"type":"string"},"type":"array"},{"type":"null"}],"title":"Document Types"},"kb_type":{"anyOf":[{"$ref":"#/components/schemas/KBType"},{"type":"null"}]},"error":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Error"}},"type":"object","title":"UpdateKnowledgeBase"},"ValidationError":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"WorkflowType":{"type":"string","enum":["flow","handler"],"title":"WorkflowType"},"WorkflowWithTriggers":{"properties":{"id":{"type":"string","format":"uuid","title":"Id"},"group_id":{"type":"string","format":"uuid","title":"Group Id"},"name":{"type":"string","title":"Name"},"type":{"$ref":"#/components/schemas/WorkflowType"},"definition":{"type":"object","title":"Definition"},"last_updated_at":{"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}],"title":"Last Updated At"},"last_run_at":{"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}],"title":"Last Run At"},"created_at":{"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}],"title":"Created At"},"deleted_at":{"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}],"title":"Deleted At"},"runs_count":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Runs Count"},"author_name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Author Name"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description"},"saved":{"anyOf":[{"type":"boolean"},{"type":"null"}],"title":"Saved"},"error_handler":{"anyOf":[{"type":"string","format":"uuid"},{"type":"null"}],"title":"Error Handler"},"triggers":{"items":{"$ref":"#/components/schemas/Trigger"},"type":"array","title":"Triggers","default":[]}},"type":"object","required":["id","group_id","name","type","definition"],"title":"WorkflowWithTriggers"}},"securitySchemes":{"APIKeyHeader":{"type":"apiKey","in":"header","name":"X-API-Key"}}}}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Spotflow Backend",
+    "description": "Backend API for Spotflow",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/v1/workflows": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Get Workflows Public",
+        "operationId": "get_workflows_public",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Query"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "last_updated_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_WorkflowWithTriggers_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workflows/{workflow_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Get Workflow Public",
+        "operationId": "get_workflow_public",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowWithTriggers"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workflows/{workflow_id}/runs": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Create Run With Api Key",
+        "operationId": "create_run_with_api_key",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRunRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimplifiedRun"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Get Runs Public",
+        "operationId": "get_runs_public",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Id"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "created_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "title": "Sort"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimplifiedRun"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workflows/{workflow_id}/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Api Key Get Run",
+        "operationId": "api_key_get_run",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Id"
+            }
+          },
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "output_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Output Only"
+            }
+          },
+          {
+            "name": "use_output_ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Use Output Ids"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/SimplifiedRun"
+                    },
+                    {
+                      "$ref": "#/components/schemas/RunOutputWithStatus"
+                    }
+                  ],
+                  "title": "Response Api Key Get Run"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workflows/{workflow_id}/runs/sync": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Create Sync Run",
+        "operationId": "create_sync_run",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Id"
+            }
+          },
+          {
+            "name": "output_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Output Only"
+            }
+          },
+          {
+            "name": "use_output_ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Use Output Ids"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRunRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/RunOutput"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SimplifiedRun"
+                    }
+                  ],
+                  "title": "Response Create Sync Run"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/runs/search": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Search Runs Public",
+        "operationId": "search_runs_public",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRunRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_RunWithSearchData_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/knowledge-bases": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Add Knowledge Base",
+        "operationId": "public_add_knowledge_base",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateKnowledgeBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeBaseV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Knowledge Bases",
+        "operationId": "public_get_knowledge_bases",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Query"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "last_updated_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_KnowledgeBaseV2_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/knowledge-bases/{knowledge_base_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Knowledge Base",
+        "operationId": "public_get_knowledge_base",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeBaseV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Update Knowledge Base",
+        "operationId": "public_update_knowledge_base",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateKnowledgeBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeBaseV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Delete Knowledge Base V2",
+        "operationId": "public_delete_knowledge_base_v2",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/knowledge-bases/{knowledge_base_id}/document": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Add Knowledge Base Document",
+        "operationId": "public_add_knowledge_base_document",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDocument"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeBaseDocument"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/knowledge-bases/{knowledge_base_id}/document/{document_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Knowledge Base Document",
+        "operationId": "public_get_knowledge_base_document",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          },
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeBaseDocument"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/knowledge-bases/{knowledge_base_id}/documents/{status}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Knowledge Base Documents",
+        "operationId": "public_get_knowledge_base_documents",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "knowledge_base_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Knowledge Base Id"
+            }
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Status"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_KnowledgeBaseDocument_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/conversation": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public List Conversations",
+        "operationId": "public_list_conversations",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "last_updated_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Page size",
+              "default": 50,
+              "title": "Size"
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_Conversation_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Create Conversation",
+        "operationId": "public_create_conversation",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateConversation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationWithMessages"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/conversation/{conversation_id}": {
+      "get": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Get Conversation",
+        "operationId": "public_get_conversation",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Conversation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationWithMessages"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Add Message",
+        "operationId": "public_add_message",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Conversation Id"
+            }
+          },
+          {
+            "name": "message_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Message Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationWithMessages"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Delete Conversation",
+        "operationId": "public_delete_conversation",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Conversation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/conversation/{conversation_id}/messages/{message_id}/refresh": {
+      "post": {
+        "tags": [
+          "V1"
+        ],
+        "summary": "Public Refresh Message",
+        "operationId": "public_refresh_message",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Conversation Id"
+            }
+          },
+          {
+            "name": "message_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Message Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationWithMessages"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddMessageRequest": {
+        "properties": {
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content"
+          },
+          "tool": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "web_research",
+                  "kb_qa"
+                ]
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "files": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ConversationFile"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files"
+          },
+          "model_selection": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Selection"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "AddMessageRequest"
+      },
+      "AudioReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "doc_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Id"
+          },
+          "file_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          },
+          "from_timestamp": {
+            "type": "string",
+            "format": "duration",
+            "title": "From Timestamp"
+          },
+          "to_timestamp": {
+            "type": "string",
+            "format": "duration",
+            "title": "To Timestamp"
+          },
+          "type": {
+            "type": "string",
+            "const": "audio",
+            "title": "Type",
+            "default": "audio"
+          }
+        },
+        "type": "object",
+        "required": [
+          "from_timestamp",
+          "to_timestamp"
+        ],
+        "title": "AudioReferenceMessage"
+      },
+      "Conversation": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "last_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Last Updated At"
+          },
+          "etag": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Etag"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ConversationSettings"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "created_at",
+          "last_updated_at",
+          "etag",
+          "settings"
+        ],
+        "title": "Conversation"
+      },
+      "ConversationFile": {
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "success",
+              "error"
+            ],
+            "title": "Status"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "size",
+          "type",
+          "status",
+          "url"
+        ],
+        "title": "ConversationFile"
+      },
+      "ConversationSettings": {
+        "properties": {
+          "model_selection": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Selection",
+            "default": "spot-performance"
+          },
+          "web_search": {
+            "type": "boolean",
+            "title": "Web Search",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "ConversationSettings"
+      },
+      "ConversationWithMessages": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "last_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Last Updated At"
+          },
+          "etag": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Etag"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ConversationSettings"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "type": "array",
+            "title": "Messages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "created_at",
+          "last_updated_at",
+          "etag",
+          "settings",
+          "messages"
+        ],
+        "title": "ConversationWithMessages"
+      },
+      "CreateConversation": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "title": "CreateConversation"
+      },
+      "CreateDocument": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "prefix": {
+            "type": "string",
+            "title": "Prefix",
+            "default": "/"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "doc_metadata": {
+            "type": "object",
+            "title": "Doc Metadata",
+            "default": {}
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "name"
+        ],
+        "title": "CreateDocument"
+      },
+      "CreateKnowledgeBase": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "document_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Document Types",
+            "default": []
+          },
+          "status": {
+            "$ref": "#/components/schemas/TrainStatus",
+            "default": "created"
+          },
+          "kb_type": {
+            "$ref": "#/components/schemas/KBType",
+            "default": "temporary"
+          },
+          "workflow_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workflow Id"
+          },
+          "node_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "title": "CreateKnowledgeBase"
+      },
+      "CreateRunRequest": {
+        "properties": {
+          "input": {
+            "type": "object",
+            "title": "Input"
+          },
+          "node_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Ids"
+          },
+          "group_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "title": "CreateRunRequest"
+      },
+      "DocumentReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "doc_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Id"
+          },
+          "file_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          },
+          "type": {
+            "type": "string",
+            "const": "document",
+            "title": "Type",
+            "default": "document"
+          },
+          "quote": {
+            "type": "string",
+            "title": "Quote"
+          },
+          "page_label": {
+            "type": "string",
+            "title": "Page Label"
+          },
+          "ref_num": {
+            "type": "integer",
+            "title": "Ref Num"
+          },
+          "content_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "quote",
+          "page_label",
+          "ref_num"
+        ],
+        "title": "DocumentReferenceMessage"
+      },
+      "DocumentStatus": {
+        "type": "string",
+        "enum": [
+          "trained",
+          "training",
+          "error",
+          "uploaded",
+          "folder"
+        ],
+        "title": "DocumentStatus"
+      },
+      "EdgeProgress": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/EdgeStatus",
+            "default": "pending"
+          }
+        },
+        "type": "object",
+        "title": "EdgeProgress"
+      },
+      "EdgeStatus": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "active",
+          "skipped",
+          "completed"
+        ],
+        "title": "EdgeStatus"
+      },
+      "ErrorMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "type": {
+            "type": "string",
+            "const": "error",
+            "title": "Type",
+            "default": "error"
+          },
+          "error_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "ErrorMessage"
+      },
+      "FunctionCallData": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "arguments": {
+            "type": "object",
+            "title": "Arguments"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "arguments"
+        ],
+        "title": "FunctionCallData"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImageReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "doc_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Id"
+          },
+          "file_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          },
+          "type": {
+            "type": "string",
+            "const": "image",
+            "title": "Type",
+            "default": "image"
+          }
+        },
+        "type": "object",
+        "title": "ImageReferenceMessage"
+      },
+      "InfoMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "type": {
+            "type": "string",
+            "const": "info",
+            "title": "Type",
+            "default": "info"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "InfoMessage"
+      },
+      "InternalToolResultMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "function"
+          },
+          "tool_type": {
+            "type": "string",
+            "enum": [
+              "kb_qa",
+              "web_research",
+              "workflow",
+              "list_workflows",
+              "run_integration",
+              "noxus_qa"
+            ],
+            "title": "Tool Type"
+          },
+          "type": {
+            "type": "string",
+            "const": "tool_result",
+            "title": "Type",
+            "default": "tool_result"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_type",
+          "content"
+        ],
+        "title": "InternalToolResultMessage"
+      },
+      "KBType": {
+        "type": "string",
+        "enum": [
+          "temporary",
+          "entity"
+        ],
+        "title": "KBType"
+      },
+      "KnowledgeBaseDocument": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "short_summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Short Summary"
+          },
+          "doc_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Type"
+          },
+          "source_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SourceType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Metadata"
+          },
+          "content_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Type"
+          },
+          "has_conversion": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Has Conversion"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "doc_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Metadata"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "prefix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prefix"
+          },
+          "uri": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uri"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "size": {
+            "type": "integer",
+            "title": "Size"
+          },
+          "file_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "summary",
+          "status",
+          "error",
+          "updated_at",
+          "created_at",
+          "size"
+        ],
+        "title": "KnowledgeBaseDocument"
+      },
+      "KnowledgeBaseV2": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TrainStatus"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "document_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Document Types"
+          },
+          "kb_type": {
+            "$ref": "#/components/schemas/KBType"
+          },
+          "size": {
+            "type": "number",
+            "title": "Size"
+          },
+          "num_docs": {
+            "type": "integer",
+            "title": "Num Docs"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "total_documents": {
+            "type": "integer",
+            "title": "Total Documents"
+          },
+          "training_documents": {
+            "type": "integer",
+            "title": "Training Documents"
+          },
+          "trained_documents": {
+            "type": "integer",
+            "title": "Trained Documents"
+          },
+          "error_documents": {
+            "type": "integer",
+            "title": "Error Documents"
+          },
+          "uploaded_documents": {
+            "type": "integer",
+            "title": "Uploaded Documents"
+          },
+          "source_types": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/SourceType"
+            },
+            "type": "object",
+            "title": "Source Types"
+          },
+          "training_source_types": {
+            "items": {
+              "$ref": "#/components/schemas/SourceType"
+            },
+            "type": "array",
+            "title": "Training Source Types"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "name",
+          "status",
+          "description",
+          "document_types",
+          "kb_type",
+          "size",
+          "num_docs",
+          "created_at",
+          "updated_at",
+          "error",
+          "total_documents",
+          "training_documents",
+          "trained_documents",
+          "error_documents",
+          "uploaded_documents",
+          "source_types",
+          "training_source_types"
+        ],
+        "title": "KnowledgeBaseV2"
+      },
+      "MarkdownMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole"
+          },
+          "type": {
+            "type": "string",
+            "const": "markdown",
+            "title": "Type",
+            "default": "markdown"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "role"
+        ],
+        "title": "MarkdownMessage"
+      },
+      "Message": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "message_parts": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/UserMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/ToolCallMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/ToolCalledMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/ToolCalledMessageEnd"
+                },
+                {
+                  "$ref": "#/components/schemas/MessageEnd"
+                },
+                {
+                  "$ref": "#/components/schemas/MarkdownMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/AudioReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/ImageReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/VideoReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/DocumentReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/WebReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/SourceReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/SystemMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/WarningMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/InfoMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/SuccessMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/SetConversationTitle"
+                },
+                {
+                  "$ref": "#/components/schemas/InternalToolResultMessage"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "type",
+                "mapping": {
+                  "audio": "#/components/schemas/AudioReferenceMessage",
+                  "document": "#/components/schemas/DocumentReferenceMessage",
+                  "error": "#/components/schemas/ErrorMessage",
+                  "image": "#/components/schemas/ImageReferenceMessage",
+                  "info": "#/components/schemas/InfoMessage",
+                  "markdown": "#/components/schemas/MarkdownMessage",
+                  "message_end": "#/components/schemas/MessageEnd",
+                  "set_conversation_title": "#/components/schemas/SetConversationTitle",
+                  "source_reference": "#/components/schemas/SourceReferenceMessage",
+                  "success": "#/components/schemas/SuccessMessage",
+                  "system": "#/components/schemas/SystemMessage",
+                  "tool_call": "#/components/schemas/ToolCallMessage",
+                  "tool_called": "#/components/schemas/ToolCalledMessage",
+                  "tool_called_end": "#/components/schemas/ToolCalledMessageEnd",
+                  "tool_result": "#/components/schemas/InternalToolResultMessage",
+                  "user": "#/components/schemas/UserMessage",
+                  "video": "#/components/schemas/VideoReferenceMessage",
+                  "warning": "#/components/schemas/WarningMessage",
+                  "web_reference": "#/components/schemas/WebReferenceMessage"
+                }
+              }
+            },
+            "type": "array",
+            "title": "Message Parts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "created_at",
+          "message_parts"
+        ],
+        "title": "Message"
+      },
+      "MessageEnd": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "type": {
+            "type": "string",
+            "const": "message_end",
+            "title": "Type",
+            "default": "message_end"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "MessageEnd"
+      },
+      "MessageRole": {
+        "type": "string",
+        "enum": [
+          "system",
+          "user",
+          "assistant",
+          "function",
+          "noxus"
+        ],
+        "title": "MessageRole"
+      },
+      "NodeProgress": {
+        "properties": {
+          "current_it": {
+            "type": "integer",
+            "title": "Current It"
+          },
+          "total_it": {
+            "type": "integer",
+            "title": "Total It"
+          },
+          "status": {
+            "$ref": "#/components/schemas/NodeStatus"
+          },
+          "warnings": {
+            "items": {
+              "$ref": "#/components/schemas/SpotWarning"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          },
+          "progress": {
+            "type": "number",
+            "title": "Progress",
+            "readOnly": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "current_it",
+          "total_it",
+          "status",
+          "progress"
+        ],
+        "title": "NodeProgress"
+      },
+      "NodeStatus": {
+        "type": "string",
+        "enum": [
+          "running",
+          "errored",
+          "succeeded",
+          "skipped"
+        ],
+        "title": "NodeStatus"
+      },
+      "Page_Conversation_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Conversation"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size",
+          "pages"
+        ],
+        "title": "Page[Conversation]"
+      },
+      "Page_KnowledgeBaseDocument_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/KnowledgeBaseDocument"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size",
+          "pages"
+        ],
+        "title": "Page[KnowledgeBaseDocument]"
+      },
+      "Page_KnowledgeBaseV2_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/KnowledgeBaseV2"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size",
+          "pages"
+        ],
+        "title": "Page[KnowledgeBaseV2]"
+      },
+      "Page_RunWithSearchData_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RunWithSearchData"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
+        "title": "Page[RunWithSearchData]"
+      },
+      "Page_WorkflowWithTriggers_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/WorkflowWithTriggers"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size",
+          "pages"
+        ],
+        "title": "Page[WorkflowWithTriggers]"
+      },
+      "RunOutput": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "output": {
+            "type": "object",
+            "title": "Output"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "output"
+        ],
+        "title": "RunOutput"
+      },
+      "RunOutputWithStatus": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "output": {
+            "type": "object",
+            "title": "Output"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunStatus"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "output",
+          "status"
+        ],
+        "title": "RunOutputWithStatus"
+      },
+      "RunStatus": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "running",
+          "failed",
+          "completed",
+          "stopped"
+        ],
+        "title": "RunStatus"
+      },
+      "RunWithSearchData": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workflow Id"
+          },
+          "input": {
+            "type": "object",
+            "title": "Input"
+          },
+          "output": {
+            "type": "object",
+            "title": "Output"
+          },
+          "node_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Ids"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RunStatus"
+          },
+          "progress": {
+            "type": "integer",
+            "title": "Progress",
+            "default": 0
+          },
+          "progress_details": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WorkflowProgress"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "definitions": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definitions"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "workflow": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Workflow"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "meta": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meta"
+          },
+          "search_data": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Search Data"
+          },
+          "similarity": {
+            "type": "number",
+            "title": "Similarity",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "workflow_id",
+          "input",
+          "output",
+          "status",
+          "created_at"
+        ],
+        "title": "RunWithSearchData"
+      },
+      "SearchRunRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "title": "Query"
+          },
+          "similarity_threshold": {
+            "type": "number",
+            "title": "Similarity Threshold",
+            "default": 0
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "title": "Limit",
+            "default": 10
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "query"
+        ],
+        "title": "SearchRunRequest"
+      },
+      "SetConversationTitle": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "type": {
+            "type": "string",
+            "const": "set_conversation_title",
+            "title": "Type",
+            "default": "set_conversation_title"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "SetConversationTitle"
+      },
+      "SimplifiedRun": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workflow Id"
+          },
+          "input": {
+            "type": "object",
+            "title": "Input"
+          },
+          "output": {
+            "type": "object",
+            "title": "Output"
+          },
+          "node_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Ids"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RunStatus"
+          },
+          "progress": {
+            "type": "integer",
+            "title": "Progress",
+            "default": 0
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "workflow_id",
+          "input",
+          "output",
+          "status",
+          "created_at"
+        ],
+        "title": "SimplifiedRun"
+      },
+      "SourceReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "type": {
+            "type": "string",
+            "const": "source_reference",
+            "title": "Type",
+            "default": "source_reference"
+          },
+          "references": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DocumentReferenceMessage"
+                },
+                {
+                  "$ref": "#/components/schemas/WebReferenceMessage"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "References"
+          }
+        },
+        "type": "object",
+        "required": [
+          "references"
+        ],
+        "title": "SourceReferenceMessage"
+      },
+      "SourceType": {
+        "type": "string",
+        "enum": [
+          "Document",
+          "Google Drive",
+          "Notion",
+          "Website",
+          "OneDrive",
+          "Slack",
+          "Linear",
+          "Github",
+          "Teams",
+          "Sharepoint"
+        ],
+        "title": "SourceType"
+      },
+      "SpotWarning": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          },
+          "identifier": {
+            "$ref": "#/components/schemas/WarningIdentifier"
+          },
+          "node_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Node Id"
+          },
+          "params": {
+            "type": "object",
+            "title": "Params",
+            "default": {}
+          },
+          "markdown": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Markdown"
+          },
+          "snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snippet"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail",
+          "identifier"
+        ],
+        "title": "SpotWarning"
+      },
+      "Status": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "title": "Status"
+      },
+      "SuccessMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "type": {
+            "type": "string",
+            "const": "success",
+            "title": "Type",
+            "default": "success"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "SuccessMessage"
+      },
+      "SystemMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "system"
+          },
+          "type": {
+            "type": "string",
+            "const": "system",
+            "title": "Type",
+            "default": "system"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "SystemMessage"
+      },
+      "ToolCallMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "function"
+          },
+          "tool_type": {
+            "type": "string",
+            "enum": [
+              "kb_qa",
+              "web_research",
+              "workflow",
+              "list_workflows",
+              "run_integration",
+              "noxus_qa"
+            ],
+            "title": "Tool Type"
+          },
+          "type": {
+            "type": "string",
+            "const": "tool_call",
+            "title": "Type",
+            "default": "tool_call"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "function_call": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FunctionCallData"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_type"
+        ],
+        "title": "ToolCallMessage"
+      },
+      "ToolCalledMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "function"
+          },
+          "tool_type": {
+            "type": "string",
+            "enum": [
+              "kb_qa",
+              "web_research",
+              "workflow",
+              "list_workflows",
+              "run_integration",
+              "noxus_qa"
+            ],
+            "title": "Tool Type"
+          },
+          "type": {
+            "type": "string",
+            "const": "tool_called",
+            "title": "Type",
+            "default": "tool_called"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_type",
+          "content"
+        ],
+        "title": "ToolCalledMessage"
+      },
+      "ToolCalledMessageEnd": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "function"
+          },
+          "tool_type": {
+            "type": "string",
+            "enum": [
+              "kb_qa",
+              "web_research",
+              "workflow",
+              "list_workflows",
+              "run_integration",
+              "noxus_qa"
+            ],
+            "title": "Tool Type"
+          },
+          "type": {
+            "type": "string",
+            "const": "tool_called_end",
+            "title": "Type",
+            "default": "tool_called_end"
+          },
+          "function_call": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FunctionCallData"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_type",
+          "content"
+        ],
+        "title": "ToolCalledMessageEnd"
+      },
+      "TrainStatus": {
+        "type": "string",
+        "enum": [
+          "created",
+          "trained",
+          "training",
+          "error"
+        ],
+        "title": "TrainStatus"
+      },
+      "Trigger": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workflow Id"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition"
+          },
+          "routing_key": {
+            "type": "string",
+            "title": "Routing Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "workflow_id",
+          "definition",
+          "routing_key"
+        ],
+        "title": "Trigger"
+      },
+      "UpdateKnowledgeBase": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrainStatus"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "document_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Types"
+          },
+          "kb_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/KBType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "summary_embedding": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary Embedding"
+          },
+          "needs_summary_update": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Needs Summary Update"
+          }
+        },
+        "type": "object",
+        "title": "UpdateKnowledgeBase"
+      },
+      "UserMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "user"
+          },
+          "type": {
+            "type": "string",
+            "const": "user",
+            "title": "Type",
+            "default": "user"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content",
+            "default": ""
+          },
+          "tool": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "web_research",
+                  "kb_qa",
+                  "noxus_qa"
+                ]
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "files": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ConversationFile"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files"
+          },
+          "model_selection": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Selection"
+          },
+          "images": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Images"
+          }
+        },
+        "type": "object",
+        "title": "UserMessage"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VideoReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "kb_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kb Id"
+          },
+          "doc_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Doc Id"
+          },
+          "file_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          },
+          "from_timestamp": {
+            "type": "string",
+            "format": "duration",
+            "title": "From Timestamp"
+          },
+          "to_timestamp": {
+            "type": "string",
+            "format": "duration",
+            "title": "To Timestamp"
+          },
+          "type": {
+            "type": "string",
+            "const": "video",
+            "title": "Type",
+            "default": "video"
+          }
+        },
+        "type": "object",
+        "required": [
+          "from_timestamp",
+          "to_timestamp"
+        ],
+        "title": "VideoReferenceMessage"
+      },
+      "WarningIdentifier": {
+        "type": "string",
+        "enum": [
+          "general",
+          "model_fallback",
+          "model_timeout",
+          "reading_spreadsheet",
+          "invalid_search",
+          "no_results_returned",
+          "integration_warning",
+          "failed_scraping",
+          "invalid_value",
+          "continue_on_error",
+          "data_ingestion",
+          "document_already_exists",
+          "ingestion_timeout",
+          "libreoffice_conversion"
+        ],
+        "title": "WarningIdentifier"
+      },
+      "WarningMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "type": {
+            "type": "string",
+            "const": "warning",
+            "title": "Type",
+            "default": "warning"
+          },
+          "warning_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warning Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "WarningMessage"
+      },
+      "WebReferenceMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/MessageRole",
+            "default": "noxus"
+          },
+          "type": {
+            "type": "string",
+            "const": "web_reference",
+            "title": "Type",
+            "default": "web_reference"
+          },
+          "quote": {
+            "type": "string",
+            "title": "Quote"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "ref_label": {
+            "type": "string",
+            "title": "Ref Label"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "quote",
+          "title",
+          "ref_label",
+          "url"
+        ],
+        "title": "WebReferenceMessage"
+      },
+      "Workflow": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WorkflowType"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition"
+          },
+          "last_updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated At"
+          },
+          "last_run_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run At"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "deleted_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deleted At"
+          },
+          "runs_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Runs Count"
+          },
+          "author_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "saved": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Saved"
+          },
+          "error_handler": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Handler"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "name",
+          "type",
+          "definition"
+        ],
+        "title": "Workflow"
+      },
+      "WorkflowProgress": {
+        "properties": {
+          "executed_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Executed Nodes"
+          },
+          "running_nodes": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Running Nodes"
+          },
+          "remaining_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Remaining Nodes"
+          },
+          "skipped_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Skipped Nodes",
+            "default": []
+          },
+          "error_handler_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Error Handler Nodes",
+            "default": []
+          },
+          "per_node_progress": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/NodeProgress"
+            },
+            "type": "object",
+            "title": "Per Node Progress"
+          },
+          "per_edge_progress": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/EdgeProgress"
+            },
+            "type": "object",
+            "title": "Per Edge Progress",
+            "default": {}
+          },
+          "total_progress": {
+            "type": "number",
+            "title": "Total Progress",
+            "readOnly": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "executed_nodes",
+          "remaining_nodes",
+          "per_node_progress",
+          "total_progress"
+        ],
+        "title": "WorkflowProgress"
+      },
+      "WorkflowType": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "handler",
+          "ingestion"
+        ],
+        "title": "WorkflowType"
+      },
+      "WorkflowWithTriggers": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WorkflowType"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition"
+          },
+          "last_updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated At"
+          },
+          "last_run_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run At"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "deleted_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deleted At"
+          },
+          "runs_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Runs Count"
+          },
+          "author_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "saved": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Saved"
+          },
+          "error_handler": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Handler"
+          },
+          "triggers": {
+            "items": {
+              "$ref": "#/components/schemas/Trigger"
+            },
+            "type": "array",
+            "title": "Triggers",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "name",
+          "type",
+          "definition"
+        ],
+        "title": "WorkflowWithTriggers"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      },
+      "Auth0HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
