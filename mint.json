@@ -202,10 +202,9 @@
     {
       "group": "Runs",
       "pages": [
-        "api-reference/v1/api-key-get-run",
-        "api-reference/v1/get-runs-public",
         "api-reference/v1/create-run-with-api-key",
         "api-reference/v1/create-sync-run",
+        "api-reference/v1/get-runs-public",
         "api-reference/v1/public-get-paginated-runs",
         "api-reference/v1/public-get-run-by-id-and-workflow",
         "api-reference/v1/public-get-run-by-id",
@@ -219,11 +218,11 @@
         "api-reference/v1/public-get-knowledge-base",
         "api-reference/v1/public-add-knowledge-base",
         "api-reference/v1/public-get-knowledge-bases",
-        "api-reference/v1/delete-knowledge-base-v2",
+        "api-reference/v1/public-delete-knowledge-base-v2",
         "api-reference/v1/public-update-knowledge-base",
-        "api-reference/v1/add-knowledge-base-document",
-        "api-reference/v1/get-knowledge-base-document",
-        "api-reference/v1/get-knowledge-base-documents"
+        "api-reference/v1/public-add-knowledge-base-document",
+        "api-reference/v1/public-get-knowledge-base-document",
+        "api-reference/v1/public-get-knowledge-base-documents"
       ]
     },
     {
