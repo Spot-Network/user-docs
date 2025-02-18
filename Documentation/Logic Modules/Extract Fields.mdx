@@ -1,0 +1,33 @@
+---
+title: "Extract Fields"
+description: "Use AI to extract fields from a text and turn them into outputs"
+---
+
+The `Extract fields` module is a logic module that can extract important information from a text block. This module is particularly useful when extracting key variables from a text to store in a spreadsheet or database.
+
+**You can use this module to parse a complex output and extract relevant information for the workflow**
+
+This module has multiple configurations:
+
+- **Outputs**
+  - Each output is one thing you want to take from the input and each one has
+    - **Field** - This is the name of the output for you to see in the workflow
+    - **Description** - **This is where you should explain what you want.** 
+    - Eg. Let's say you want to find the date of when a document was emmited. In `Field` you write "Date", and in the `Description` you put "Date of emission"
+- **Extracts as list**
+  - Enabling will extract values in a list
+- **Extract first only**
+  - Enable if you want the module to only retrieve the first found value
+
+The `Extract Information` module has **one input** and **variable outputs**:
+
+- **Input**: 
+  - `Text`, receives any text input
+- **Output**: 
+  - `Text`, can have unlimited text outputs; each output requires a proper description as those are leveraged by the AI agent to find the right information.
+
+In this module, you can also use `Advanced Options` to select the AI model you want to use.
+
+In the image below, the input is a file, which is tranformed to text in the File to Text node, and afterwards, we take the Date (Description: Date of emission) and Company (Description: Company responsible for the document) from the text.
+
+<img height="200" src="/images/ExtractFields.png" />

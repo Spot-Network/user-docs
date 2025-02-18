@@ -46,7 +46,7 @@
             "group": "Logic Modules 🧩",
             "pages": [
               "Documentation/Logic Modules/Combine Text",
-              "Documentation/Logic Modules/Extract Information",
+              "Documentation/Logic Modules/Extract Fields",
               "Documentation/Logic Modules/Condition",
               "Documentation/Logic Modules/Filterlist",
               "Documentation/Logic Modules/List2value",
