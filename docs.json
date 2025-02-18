@@ -34,11 +34,12 @@
           {
             "group": "Data Modules 🗂️",
             "pages": [
-              "Documentation/Data Modules/Scrape Web Page",
-              "Documentation/Data Modules/Use Search Engine",
+              "Documentation/Data Modules/File to Text",
               "Documentation/Data Modules/List Website Entries",
+              "Documentation/Data Modules/Scrape Web Page",
+              "Documentation/Data Modules/Run Code",
               "Documentation/Data Modules/Generate File",
-              "Documentation/Data Modules/File to Text"
+              "Documentation/Data Modules/Use Search Engine"
             ]
           },
           {

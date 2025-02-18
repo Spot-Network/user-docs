@@ -7,23 +7,23 @@ description: "Start using AI to automate your life in just 5 minutes"
 
 The workflow builder is one of the core tools in Noxus's platform. This is where you build, run, deploy, and share your AI workflows and tools.
 
-To access the workflow builder, click "Create New Flow" on the page "My flows".
-
-<img height="200" src="/images/Access Workflow.png" />
-
-The workflow builder comprises the **Navigation Bar** - where you can find all the components to build your workflow - and the **Top Bar** - where you can Run and Publish your workflow.
+To access the workflow builder, click "New Flow" on the page "My flows".
 
 <img height="200" src="/images/WB.png" />
+
+The workflow builder comprises the **Navigation Bar**, on the left, where you can find all the nodes to build your workflow - and the **Top Bar** - where you can Run and see past runs of your workflow.
+
+<img height="200" src="/images/WorkflowBuilder.png" />
 
 ## 2. Navigation Bar
 
 The Navigation Bar is the library of modules aggregated by key functionality. Each module in the workflow builder is documented with a detailed explanation of their behavior.
 
 - **Data Modules** 🗂️: These modules allow you to transform and import data of multiple types and sources
-- **Logic Modules** 🧩: These modules are designed to help you build more complex workflows by combining sub-flows and actions with logical steps
-- **AI Modules** 🧠: Includes state-of-the-art text, image and audio AI models
+- **Logic Modules** 🧩: These modules are designed to help you build more complex workflows by combining text from different nodes, extracting specific information, or running things in parallel
+- **AI Modules** ✨: Includes state-of-the-art text, image and audio AI models
 - **Integration Modules** 🔗: Including integrations with tools such as Gmail, Google Drive, Google Sheets, Google Docs, Airtable, Notion, Confluence, and others
-- **Agent Modules** 🤖: Our in-house built agents help you perform specific tasks automatically and with much better performance
+- **Sub Flows** 🛠️: Use other Flows you have as a node. Great to simplify big workflows!
 
 ## 3. Builder canvas
 
@@ -35,18 +35,16 @@ You can connect modules with the same data types together. Just take this very b
 
 You can then take things further to build more advanced workflows that perform much better than traditional agents and models.
 
-Take, for example, this more complex workflow that uses two different agents to learn complex concepts from books and the Internet:
+Take, for example, this more complex workflow that uses two different agents both, search a company's Linkedin profile, and also find all their relevant information online:
 
-<img height="200" src="/images/Luxembourg-Law.png" />
+<img height="200" src="/images/ComplexWorkflow.png" />
 
 ## 4. Run
 
-The Run page allows you to test your workflow and understand if it outputs the expected actions or results.
+The Run page allows you to test your workflow and understand if it outputs the expected actions or results. Just fill the information on the left if necessary, press run, and see your nodes working their magic.
 
 <img height="200" src="/images/Run.png" />
 
-## 5. Publish
+And that's it!
 
-Once you build and test your workflow, you can have multiple ways to interact with it.
-
-You can run it on a public web link and share it with your co-workers and friends, or you can run it on any of your favorite apps like WhatsApp, Slack, and MS Teams.
+After building your workflow, consider using Triggers, that start your workflow automatically.

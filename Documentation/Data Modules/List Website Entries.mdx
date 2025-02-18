@@ -9,24 +9,18 @@ The `List Website Entries` module enables effortless extraction of data from any
 
 This module has multiple configurations that can enhance its capabilities.
 
-- **Type of search**: This allows the type of search to be selected.
-  - `Web Search` is a traditional google search.
-  - `Flights` finds flights on google flights.
-  - `Hotels` finds Hotels on google hotels.
-  - `Shopping` finds products on google shopping.
-  - `Locations` finds locations on google maps.
-  - `Science Articles` finds research papers on google scholar.
-  - `Images` finds images on google images.
 - **Extract as list**: If enabled, outputs the search results as a list instead of a single value.
-- **Output as JSON**: If enabled, returns the result as a raw JSON result instead of a formatted markdown
-- **Number of retrieved results**: If enabled, attempts to navigate pages if the webpage being read has pagination. Only possible if depth is set to 0
+- **Extract as**: Options are Markdown or JSON.
+
+- **Navigate pages**: Attempt to navigate pages if the webpage being read has pagination. Picture a website that has product listings and they continue in other pages.
 - **Advanced Options**:
   - **Continue on Error**: If enabled, in case the scraping fails, the output value of Text will contain the value `<ERROR>`, instead of failing the workflow
 
 The `List Website Entries` module has **one input** and **one output**:
 
-- **Input**: `Website`, provide the URL of the marketplace or listing page. Ensure that the link is already sorted according to your preferred criteria, as this node is designed to read and process pages that list items in the specified format.
+- **Input**: 
+  -`Website`, provide the URL of the marketplace or listing page. Ensure that the link is already sorted according to your preferred criteria, as this node is designed to read and process pages that list items in the specified format.
 - **Output**:
   - `Search Results`, the results of the listing in either markdown or JSON format, as previously selected
 
-<img height="200" src="/images/USE.png" />
+<img height="200" src="/images/ListWebsiteEntries.png" />
