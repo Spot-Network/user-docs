@@ -57,6 +57,7 @@
             "group": "AI Modules 🧠",
             "pages": [
               "Documentation/AI/AI Text Creation",
+              "Documentation/AI/Summarizer",
               "Documentation/AI/EnrichCompany",
               "Documentation/AI/AI Image Generation",
               "Documentation/AI/AIVision",
