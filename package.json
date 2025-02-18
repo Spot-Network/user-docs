@@ -1,7 +1,11 @@
 {
   "scripts": {
     "dev": "mintlify dev",
-    "openapi": "npx @mintlify/scraping@latest openapi-file openapi/openapi.json -o api-reference"
+    "mintlify": "mintlify",
+    "check": "mintlify broken-links",
+    "upgrade": "mintlify upgrade",
+    "openapi-check": "mintlify openapi-check openapi/openapi.json",
+    "openapi-gen": "npx @mintlify/scraping@latest openapi-file openapi/openapi.json -o api-reference"
   },
   "dependencies": {
     "mintlify": "^4.0.393"
