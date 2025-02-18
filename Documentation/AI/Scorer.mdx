@@ -1,0 +1,27 @@
+---
+title: "Scorer"
+description: "Leverage AI to evaluate and score text based on your specific criteria."
+---
+
+The `Scorer` is a node that can evaluate text, and according to your specified criteria, retrieves a score.
+
+In the configuration of the node you have:
+
+- **Scoring Range**: 
+  - Choose between a score range of 1-5 and 1-10
+- **Score is minimum if**: 
+  - Specify here what would represent the lowest value of 1
+- **Score is maximum if**: 
+  - Specify here what would represent the highest value of the range
+
+The `Scorer` module has **one input** and **two outputs**:
+
+- **Input**: 
+  - One input of type `Text`
+- **Output**: 
+  - `Score`, The output is a number from the range given above
+  - `Reasoning` is the rationale that the node took to achieve that number
+
+Take into example a CV analyser that according to specified criteria gives a score to that CV for pre-screening
+
+<img height="200" src="/images/Scorer.png" />
