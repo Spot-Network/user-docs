@@ -8,6 +8,7 @@ Click on `Use this template` to copy the Mintlify starter kit. The starter kit c
 - API Reference pages
 - Use of popular components
 
+
 ### Development
 
 Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
@@ -29,4 +30,9 @@ Install our Github App to autopropagate changes from youre repo to your deployme
 #### Troubleshooting
 
 - Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `mint.json`
+- Page loads as a 404 - Make sure you are running in a folder with `mint.json` 
+
+
+
+
+

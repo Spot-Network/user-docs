@@ -1,0 +1,19 @@
+---
+title: "Generate Text"
+description: "Generate text using any of the state-of-the-art AI models"
+---
+
+The `Generate Text` module can use any of the state-of-the-art AI models to generate text.
+
+**You can use this module to perform intelligent tasks in your workflow**
+
+The `Generate Text` module has **variable inputs** and **one output**:
+
+- **Inputs**: The module can receive any number of inputs that can be used to create a `Prompt`, The `Prompt` contains the instruction for the AI model. For example, a `Prompt` can be: “Classify these AI models according to pricing criteria and performance,” along with the list of AI models to classify.
+- **Output**: `Response`, The `Response` returns the output from the AI model based on the `Context` and `Prompt` inputs provided.
+- **Configs**:
+  - `Read Image URLs`, the LLM will attempt to read the images when presented with an image URL
+  - `Context`, The `Context` describes the behavioral information in detail. You can reference the profession, personality traits, or behaviors you expect. For example, “you are an AI expert.”
+  - `AI Models`, This module can be tested with all the best models in the market, or the ones that work best for a specific use case.
+
+<img height="200" src="/images/AITC.png" />

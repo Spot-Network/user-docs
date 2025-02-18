@@ -1,0 +1,127 @@
+---
+title: "Assign a Role to AI"
+---
+
+Transforming your AI from a general assistant to a specialized expert is straightforward with Noxus's **Context** prompt. By defining a specific role within the **Context** text box available in all AI modules, you can tailor the AI's expertise, tone, and focus to meet your unique needs.
+
+## Why Assign a Role to Your AI?
+
+- **Enhanced Precision:** Defining a role ensures the AI understands the specific nuances of specialized tasks, leading to more accurate and reliable outputs.
+- **Customized Communication:** Whether you require the analytical depth of a financial analyst or the creative flair of a marketing strategist, role assignment adjusts the AI's tone and style accordingly.
+- **Focused Responses:** Setting a clear role context keeps the AI aligned with your specific objectives, minimizing irrelevant or off-target information.
+
+## How to Assign a Role Using the Context System Prompt
+
+Utilize the **Context** text box in your AI node to define the AI's role. This **Context** sets the foundational behavior and expertise level of the AI, while all task-specific instructions should be included in the Prompt text box.
+
+<img height="100" src="/images/example1.png" />
+
+## Example Setup
+
+1. **Access the Context Box:** Navigate to your AI node and locate the **Context** text box.
+2. **Define the Role:** Enter a clear and specific role prompt that outlines the AI's expertise and perspective.
+
+   **Example:**
+
+   <img height="100" src="/images/Example2.png" />
+
+3. **Add Task-Specific Instructions:** In the Prompt text box, provide the specific instructions for the AI to follow.
+
+   **Example:**
+
+   <img height="200" src="/images/example3.png" />
+
+<Info>
+  **Role Assignment Tip:** Experiment with various roles to observe how the AI's
+  expertise and perspective adapt. For instance, a data scientist will interpret
+  data differently than a marketing strategist, offering insights tailored to
+  each domain.
+</Info>{" "}
+
+---
+
+## Examples of Role Prompting
+
+To demonstrate the impact of assigning roles, let's explore two scenarios: one without role prompting and one with a defined role using the **Context**.
+
+<AccordionGroup>
+  <Accordion title="Legal Contract Review Without Role Assignment">
+
+**User Prompt:**
+
+Analyze this software licensing agreement for potential risks:
+
+<contract>{{ CONTRACT_TEXT }}</contract>
+
+Focus on indemnification, liability, and IP ownership.
+
+**AI Response:**
+
+Here’s a summary of the key points in the software licensing agreement:
+
+1. **Indemnification (Section 8):**
+
+   - We indemnify the vendor against claims arising from our use.
+
+2. **Limitation of Liability (Section 9):**
+
+   - Damages capped at $500.
+
+3. **IP Ownership (Section 12):**
+   - We retain ownership of our modifications.
+
+Overall, the agreement seems standard. The indemnification and liability clauses are typical, and we maintain our IP rights.
+
+  </Accordion>
+
+  <Accordion title="Legal Contract Review With Role Assignment">
+
+**User Prompt:**
+
+You are the General Counsel of a Fortune 500 tech company. We’re considering this software licensing agreement for our core data infrastructure:
+
+<contract>{{ CONTRACT_TEXT }}</contract>
+
+Analyze it for potential risks, focusing on indemnification, liability, and IP ownership. Provide your professional opinion.
+
+**AI Response:**
+
+I’ve reviewed the software licensing agreement, and I have serious concerns that could expose our company to significant risks:
+
+1. **Indemnification (Section 8):**
+
+   - **Critical Issue:** We indemnify the vendor against “any and all claims” arising from our use.
+   - **Risk:** This could hold us liable even for the vendor’s negligence or product defects.
+   - **Recommendation:** Reject. Limit our indemnity to claims arising from our violation of the agreement.
+
+2. **Limitation of Liability (Section 9):**
+
+   - **Critical Issue:** Damages capped at $500, including direct damages.
+   - **Risk:** Grossly inadequate. A critical failure in our data infrastructure could cost us millions in lost revenue and reputational damage.
+   - **Recommendation:** Reject. Negotiate for a cap at 12 months of fees for direct damages, and carve-outs for data breaches.
+
+3. **IP Ownership (Section 12):**
+   - **Critical Issue:** Vendor gains joint ownership of our modifications and integrations.
+   - **Risk:** They could use or sell our proprietary algorithms or data insights to competitors.
+   - **Recommendation:** Reject. We must retain full ownership of our work.
+
+**Professional Opinion:**
+
+Do not sign this agreement. It is grossly unfavorable and exposes us to unacceptable levels of risk. If the vendor refuses to renegotiate these terms, I strongly advise exploring alternative providers or accelerating our in-house solution. The potential costs of proceeding with this agreement far outweigh any short-term gains.
+
+  </Accordion>
+</AccordionGroup>
+
+In this example:
+
+- **Without Role Assignment:** The AI provides a basic analysis of the software licensing agreement, summarizing key sections but missing deeper insights and critical issues that could have significant implications for a large company.
+
+- **With Role Assignment:** By defining the AI as the General Counsel of a Fortune 500 tech company, the AI delivers a thorough and professional analysis. It identifies critical issues, assesses risks, and offers clear recommendations, demonstrating a higher level of expertise and attention to detail.
+
+---
+
+## Best Practices for Assigning Roles
+
+- **Be Specific:** Clearly define the AI's role in the **Context** text box to ensure it understands its expertise and perspective.
+- **Separate Instructions:** Use the **Context** text box solely for role definition. Place all task-specific instructions within the user messages to maintain clarity.
+- **Experiment and Iterate:** Test different roles to find the best fit for your tasks. Adjust the role descriptions to fine-tune the AI's performance and output style.
