@@ -1,0 +1,27 @@
+---
+title: "Categorizer"
+description: "AI classifies text into your predefined categories"
+---
+
+The AI-powered classification module automatically sorts text into your predefined categories, ensuring your content is organized efficiently.
+
+In the configuration of the node you have:
+
+- **Categories**, which have: 
+  - **Category**
+    - Insert here a name for the category
+  - **Description**
+    - Describe what this category is, and how to categorize it like it. This is the most important part.
+
+As an example of this pair, you could have: Category - Marketing, Description - Anything regarding marketing materials.
+
+The `Categorizer` module has **one input** and **two outputs**:
+
+- **Input**: 
+  - One input of type `Text`
+- **Output**: 
+  - `Category`, The selected category determined by the node.
+  - `Reasoning` - The rationale behind the node’s decision to choose that category.
+
+
+<img height="200" src="/images/Categorizer.png" />

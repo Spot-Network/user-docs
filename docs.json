@@ -65,7 +65,8 @@
               "Documentation/AI/Form",
               "Documentation/AI/AI Image Transformation",
               "Documentation/AI/Scorer",
-              "Documentation/AI//Knowledge Base QA"
+              "Documentation/AI//Knowledge Base QA",
+              "Documentation/AI//Categorizer"
             ]
           },
           {
