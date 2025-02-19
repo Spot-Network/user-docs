@@ -1214,25 +1214,23 @@ In the text prompt, each input is represented as a variable inside brackets like
 Combining text enables more complex workflows that utilize multiple layers of agents and AI models. For example:
 
 <img height="200" src="/images/Complex.png" />
-\n=== Documentation/Logic Modules/Filterlist copy.mdx ===
+\n=== Documentation/Logic Modules/JoinPaths.mdx ===
 ---
-title: "Filter List Values"
-description: "Filter values base on a specific condition or ask AI to filter it for you."
+title: "Join paths"
+description: "Use this node after a conditional node to allow you to merge different execution paths"
 ---
 
-The `Filter List` module is a logic module that can Filter values based on a specific condition or ask AI to filter it for you. This module is particularly useful when removing content from a list that fits a certain condition.
 
-The `Filter List` module has **one input** and **one output**:
+Merges different execution paths after a conditional node and uutputs the first complete value that it receives.
 
-- **Input**: `list`, receives any list
-- **Output**: `list`, the list filtered out according to the defined condition.
+The `Join Paths` module has **variable inputs** and **one output**:
 
-In this module, there are two `Configurations`:
+- **Input**: Can receive multiple inputs of type `text`;
+- **Output**: is the first value from the inputs that has an actual value and is not empty.
 
-- **AI Condition**: This allows you to use AI to filter your values. All you have to do is describe the filter condition, `E.g., Exclude all values written in Portuguese.`
-- **Value Type**: This allows you to select the type of value you are filtering, whether it is `Number` or `Text`, and apply specific conditions to each type
+Picture the image below, where after a conditional you have 2 paths, and then you merge them together to continue the flow.
 
-<img height="200" src="/images/FList.png" />
+<img height="200" src="/images/JoinPaths.png" />
 \n=== Documentation/Logic Modules/Filterlist.mdx ===
 ---
 title: "Filter List Values"
