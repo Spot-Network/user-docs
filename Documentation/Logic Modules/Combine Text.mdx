@@ -3,23 +3,15 @@ title: "Combine Text"
 description: "Combine multiple text inputs in one text output."
 ---
 
-The `Combine Text` module is fundamental for creating workflows; it mostly combines multiple inputs and forms a more text output.
-
-This is particularly useful when writing more complex prompts.
+Combine the text of the multiple source inputs as you like.
 
 The `Combine Text` module has **variable inputs** and **one output**:
 
-- **Input**: Can receive multiple inputs of type `text`; these can be used as a dynamic input inside the prompt of the Combine Text module. Just press `+` to add as many inputs as you want.
+- **Input**: Can receive multiple inputs of type `text`; these can be used as a dynamic input inside the prompt of the Combine Text module.
 - **Output**: `text`, the output is the prompt combined with the dynamic inputs.
 
-Below is an example of `Combine text` being used to compose a prompt for a fitness workflow:
+The inputs will be available as chips on top of the text configuration. Don't forget to add them!
 
-In this example, each of the **six inputs** can be positioned in the text prompt as variables.
+<img height="200" src="/images/CombineText.png" />
 
-In the text prompt, each input is represented as a variable inside brackets like these: `(( ))`
 
-<img height="200" src="/images/CT.png" />
-
-Combining text enables more complex workflows that utilize multiple layers of agents and AI models. For example:
-
-<img height="200" src="/images/Complex.png" />

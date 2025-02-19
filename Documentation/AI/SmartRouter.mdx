@@ -1,0 +1,26 @@
+---
+title: "Smart Route"
+description: "Generate text using any of the state-of-the-art AI models"
+---
+
+The `Smart Route` node is an intelligent decision-making module in your workflow. Simply provide the relevant information, define the routes and their conditions, and it will determine the optimal path for your flow.
+
+This node has a configuration called routes. They are composed of:
+  - **Action** 
+    - This is the name of the Route taken. Eg. Urgent
+  - **Condition**
+    - This is the condition that describes when to take this route. Eg. Message contains urgent requests
+  - **Output**
+    - Format the output to your liking.
+
+
+The `Smart Route` module has **variable inputs** and **variable outputs**:
+
+- **Inputs**: 
+  - The node can receive any number of inputs that can be used for the conditions and the outputs
+- **Output**: 
+  - The node can have multiple outputs, which are going to be each route the user has inserted above
+
+As an example, we have a smart router that in one instance, sends an email immediately, and on the other case, it just outputs it.
+
+<img height="200" src="/images/SmartRoute.png" />
