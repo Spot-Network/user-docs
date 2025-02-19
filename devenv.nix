@@ -5,7 +5,11 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [ pkgs.just ];
+
+  enterShell = ''
+    zsh
+  '';
 
   languages.javascript = {
     npm.enable=true;
