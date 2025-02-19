@@ -68,7 +68,8 @@
               "Documentation/AI/Scorer",
               "Documentation/AI//Knowledge Base QA",
               "Documentation/AI//Categorizer",
-              "Documentation/AI//SmartRouter"
+              "Documentation/AI//SmartRouter",
+              "Documentation/AI//FindDocuments"
             ]
           },
           {
