@@ -3,17 +3,29 @@ title: "Condition"
 description: "Filter values base on a specific condition or ask AI to filter it for you."
 ---
 
-The `Condition` module is a logic module that can Filter values based on a specific condition or ask AI to filter it for you. This module is particularly useful when removing content from a list that fits a certain condition.
+The `Condition` node is a logic module that can Filter values based on a specific condition or ask AI to filter it for you. This module is particularly useful, for example, when removing content from a list that fits a certain condition.
 
-The `Condition` module has **one input** and **one output**:
-
-- **Input**: `Variable Inputs`, receives any number of inputs
-- **Output**: A composed message for when a certain condition is `True` or `False`
-
-In this module, you two `Configurations`:
-, If
+The `Condition` node has the following configurations:
 
 - **AI Condition**: This allows you to use AI to separate elements that meet a given condition, or not. All you have to do is describe the condition that you want to be true, `E.g. value has at least two words.`
-- **Value Type**: This allows you to select the type of value you are passing to the condition, whether it is `Number` or `Text`, and apply specific conditions to each type.
+- **Condition**
+  - Take into example the following condition:
+  - <img height="120px" src="/images/ConditionExample.png" />
+  - It reads like the following: If Input 1 contains the word 'Something', then return true. If not, return false.
+- **When true return**
+  - This is the output when the condition above is true
+- **When false return**
+  - This is the output when the condition above is false
+
+<br/>
+<br/>
+
+The `Condition` module has **one input** and **two output**:
+
+- **Input**: 
+  - `Variable Inputs`, receives any number of inputs
+- **Output**: 
+  - `When true` gives the true condition
+  - `When false` gives the false condition
 
 <img height="200" src="/images/Condition.png" />
