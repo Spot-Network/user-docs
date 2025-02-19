@@ -50,7 +50,8 @@
               "Documentation/Logic Modules/Condition",
               "Documentation/Logic Modules/Filterlist",
               "Documentation/Logic Modules/List2value",
-              "Documentation/Logic Modules/Single2list"
+              "Documentation/Logic Modules/Single2list",
+              "Documentation/Logic Modules/JoinPaths"
             ]
           },
           {
