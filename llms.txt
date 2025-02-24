@@ -96,7 +96,7 @@ Repeat step 3.
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+
 \n=== Documentation/Triggers/TelegramW.mdx ===
 ---
 title: "Telegram Writer"
@@ -380,7 +380,7 @@ This page will guide you through some basic video tutorials to help you start wi
 <iframe
   width="560"
   height="315"
-  src="https://www.youtube.com/watch?v=TxsSfJccC2w&t=100s&ab_channel=Noxus"
+  src="https://www.youtube.com/embed/TxsSfJccC2w"
   title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -392,7 +392,7 @@ This page will guide you through some basic video tutorials to help you start wi
 <iframe
   width="560"
   height="315"
-  src="https://www.youtube.com/watch?v=Dv2umR1RRTk&ab_channel=Noxus"
+  src="https://www.youtube.com/embed/Dv2umR1RRTk"
   title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -404,7 +404,7 @@ This page will guide you through some basic video tutorials to help you start wi
 <iframe
   width="560"
   height="315"
-  src="https://www.youtube.com/watch?v=nFOoabG9-U0&ab_channel=Noxus"
+  src="https://www.youtube.com/embed/nFOoabG9-U0?si=Xa2P3kk9DkvY_Mcn"
   title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -575,9 +575,9 @@ title: "Google Sheets - Read from Columns"
 description: "Peeks into your Google Spreadsheets and grabs the data you need for analysis or reports."
 ---
 
-> **This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
+> This node requires that you connect your account to the `Integrations`, or connect it directly in the configurations of the node
 
-<img height="200" src="GSR.png" />
+<img height="200" src="/images/SheetsReaderConnection.png" />
 
 The `Google Sheets - Read from Columns` module allows you to read data from Google Sheets.
 
@@ -675,13 +675,12 @@ title: "Linkedin - Company Search"
 description: "Enter a company domain to extract a company summary or raw data"
 ---
 
-> **This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
-
 The `Linkedin - Company Search` module uses a company website domain to extract a concise summary or detailed raw data of the company's Linkedin profile.
 
 The `Linkedin - Company Search` module has **one input** and **one output**:
 
-- **Input** - Company Website Domain
+- **Input** 
+  - Company Website Domain in LinkedIn. Eg. "https://www.linkedin.com/company/pandadoc/"
 - **Output**:
   - Complete profile with all the information extracted from Linkedin
 - **Config**:
@@ -749,14 +748,12 @@ title: "Linkedin - Read Profile"
 description: "Enter a Linkedin URL to extract a profile summary or raw data"
 ---
 
-> **This Module requires that you connect your account to the `Linked Accounts` page. Go to Settings to get this done.**
-
 The `Linkedin - Read Profile` module uses a LinkedIn URL to extract a concise summary or detailed raw data of an individual or company profile.
 
 The `Linkedin - Read Profile` module has **one input** and **one output**:
 
 - **Input**:
-  - Linkedin URL for the profile to be read
+  - Linkedin URL for the profile to be read. Only the URL can enter here. Anything else, will produce an error.
 - **Output**:
   - Complete profile with all the information extracted from Linkedin
 - **Config**:
@@ -1194,26 +1191,18 @@ title: "Combine Text"
 description: "Combine multiple text inputs in one text output."
 ---
 
-The `Combine Text` module is fundamental for creating workflows; it mostly combines multiple inputs and forms a more text output.
-
-This is particularly useful when writing more complex prompts.
+Combine the text of the multiple source inputs as you like.
 
 The `Combine Text` module has **variable inputs** and **one output**:
 
-- **Input**: Can receive multiple inputs of type `text`; these can be used as a dynamic input inside the prompt of the Combine Text module. Just press `+` to add as many inputs as you want.
+- **Input**: Can receive multiple inputs of type `text`; these can be used as a dynamic input inside the prompt of the Combine Text module.
 - **Output**: `text`, the output is the prompt combined with the dynamic inputs.
 
-Below is an example of `Combine text` being used to compose a prompt for a fitness workflow:
+The inputs will be available as chips on top of the text configuration. Don't forget to add them!
 
-In this example, each of the **six inputs** can be positioned in the text prompt as variables.
+<img height="200" src="/images/CombineText.png" />
 
-In the text prompt, each input is represented as a variable inside brackets like these: `(( ))`
 
-<img height="200" src="/images/CT.png" />
-
-Combining text enables more complex workflows that utilize multiple layers of agents and AI models. For example:
-
-<img height="200" src="/images/Complex.png" />
 \n=== Documentation/Logic Modules/JoinPaths.mdx ===
 ---
 title: "Join paths"
@@ -1664,22 +1653,6 @@ In this example:
 - **Be Specific:** Clearly define the AI's role in the **Context** text box to ensure it understands its expertise and perspective.
 - **Separate Instructions:** Use the **Context** text box solely for role definition. Place all task-specific instructions within the user messages to maintain clarity.
 - **Experiment and Iterate:** Test different roles to find the best fit for your tasks. Adjust the role descriptions to fine-tune the AI's performance and output style.
-\n=== Documentation/Prompt/Form.mdx ===
----
-title: "Fill Form"
-description: "Enables content translatation across more than 30 languages."
----
-
-The `Fill Form` automates PDF form completion with AI for accurate and efficient data entry. Provide all necessary information for the AI to intelligently map data to the correct fields.
-
-The `Fill Form` module has **two inputs** and **one output**:
-
-- **Input**:
-  - `PDF` PDF document in form format.
-  - `Information` all the information needed to fill the PDF form.
-- **Output**: `PDF`, PDF document in form format with all the information filled in the form input.
-
-<img height="200" src="/images/Form.png" />
 \n=== Documentation/Prompt/let-the-ai-think.mdx ===
 ---
 title: 'Step-by-Step Reasoning'
@@ -1891,6 +1864,33 @@ The `Generate Image` module has **one input** and **one output**:
 - **Configs**: `width` and `height` of the image generated
 
 <img height="200" src="/images/AIIG.png" />
+\n=== Documentation/AI/FindDocuments.mdx ===
+---
+title: "Find Documents"
+description: "Locate files within your Knowledge base or your cloud provider"
+---
+
+The `Find Documents` module uses AI to quickly locate relevant files in your Knowledge Base, whether stored locally or in your cloud provider.
+
+This node has a configuration called routes. They are composed of:
+  - **Enable reporting** 
+    - If enabled, allows you to define the guidelines for generating a report on the found documents.
+  - **Report Format**
+    - Describe the format of the report you want to produce. Eg. Highlight key skills
+  - **Knowledge Base**
+    - Either pick a knowledge base with your uploaded documents, or upload some directly.
+
+<br/>
+
+The `Find Documents` module has **one input** and **two outputs**:
+
+- **Inputs**:
+  - `Request`, which is the query for the documents you are looking for
+- **Output**: 
+  - `Documents`, This comes as a list, and it retrives all documents it found. The output comes in a file format, so, to output it, change the output type to `file`
+  - `Report` is the answer to the request that was made, based on the documents it found
+
+<img height="200" src="/images/FindDocuments.png" />
 \n=== Documentation/AI/Summarizer.mdx ===
 ---
 title: "Summarizer"
@@ -2023,6 +2023,63 @@ The `Transform Image` module has **two inputs** and **one output**:
 - **Configs**: `width` and `height` of the image generated
 
 <img height="200" src="/images/AIIT.png" />
+\n=== Documentation/AI/SmartRouter.mdx ===
+---
+title: "Smart Route"
+description: "Generate text using any of the state-of-the-art AI models"
+---
+
+The `Smart Route` node is an intelligent decision-making module in your workflow. Simply provide the relevant information, define the routes and their conditions, and it will determine the optimal path for your flow.
+
+This node has a configuration called routes. They are composed of:
+  - **Action** 
+    - This is the name of the Route taken. Eg. Urgent
+  - **Condition**
+    - This is the condition that describes when to take this route. Eg. Message contains urgent requests
+  - **Output**
+    - Format the output to your liking.
+
+
+The `Smart Route` module has **variable inputs** and **variable outputs**:
+
+- **Inputs**: 
+  - The node can receive any number of inputs that can be used for the conditions and the outputs
+- **Output**: 
+  - The node can have multiple outputs, which are going to be each route the user has inserted above
+
+As an example, we have a smart router that in one instance, sends an email immediately, and on the other case, it just outputs it.
+
+<img height="200" src="/images/SmartRoute.png" />
+\n=== Documentation/AI/GenerateFields.mdx ===
+---
+title: "Generate Fields"
+description: "Enter a company domain to extract a company summary or raw data"
+---
+
+> Suggestion: Try using a simpler node such as Extract Fields before trying this node.
+
+Easily generate specific fields from your chosen AI model by providing tailored prompts and inputs. For example, request a product’s price calculation and return only the ‘Price’ field.
+
+
+This module has multiple configurations:
+
+
+- **Prompt** 
+  - Be descriptive about the outputs you want to produce in the prompt.
+- **Output**
+  - Names of the outputs you clarified in the Prompt
+
+<br/>
+
+The `Generate Fields` module has **multiple inputs** and **multiple outputs**:
+- **Input**: 
+  - `Text`, receives any text input
+- **Output**: 
+  - `Text`, can have unlimited text outputs; The output name should be described in the Prompt.
+
+Find below an example of how to use this module:
+
+<img height="200" src="/images/GenerateFields.png" />
 \n=== Documentation/AI/Knowledge Base QA.mdx ===
 ---
 title: "Knowledge Base QA"

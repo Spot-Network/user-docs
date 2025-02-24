@@ -17,7 +17,8 @@
             "group": "Get Started with Noxus 🔰",
             "pages": [
               "Documentation/introduction",
-              "Documentation/Workflow Builder"
+              "Documentation/Workflow Builder",
+              "Documentation/YFT"
             ]
           },
           {
