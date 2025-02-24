@@ -69,7 +69,8 @@
               "Documentation/AI//Knowledge Base QA",
               "Documentation/AI//Categorizer",
               "Documentation/AI//SmartRouter",
-              "Documentation/AI//FindDocuments"
+              "Documentation/AI//FindDocuments",
+              "Documentation/AI//GenerateFields"
             ]
           },
           {
